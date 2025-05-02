@@ -15,7 +15,7 @@
             --text-secondary: #667085;
             --highlight: #787ABB;
             
-            /* IP-specific colors */
+            /* IP-specific colours */
             --patent-color: #1DA7AF;
             --trademark-color: #DE4326;
             --design-color: #84C98F;
@@ -283,17 +283,58 @@
             color: var(--patent-color);
         }
         
-        .tag-Trade-mark {
+        .tag-Trade-mark,
+        .tag-Unregistered-trade-mark {
             background-color: rgba(222, 67, 38, 0.15);
             color: var(--trademark-color);
         }
         
+        .tag-Design {
+            background-color: rgba(132, 201, 143, 0.15);
+            color: var(--design-color);
+        }
+        
+        .tag-Plant-breeder {
+            background-color: rgba(241, 172, 30, 0.15);
+            color: var(--pbr-color);
+        }
+        
+        .tag-Copyright {
+            background-color: rgba(120, 122, 187, 0.15);
+            color: var(--copyright-color);
+        }
+        
+        .tag-All,
+        .tag-Other {
+            background-color: rgba(102, 112, 133, 0.15);
+            color: var(--all-rights-color);
+        }
+        
+        /* Card border colors by IP type */
         .card-Patent {
             border-left-color: var(--patent-color);
         }
         
-        .card-Trade-mark {
+        .card-Trade-mark,
+        .card-Unregistered-trade-mark {
             border-left-color: var(--trademark-color);
+        }
+        
+        .card-Design {
+            border-left-color: var(--design-color);
+        }
+        
+        .card-Plant-breeder {
+            border-left-color: var(--pbr-color);
+        }
+        
+        .card-Copyright {
+            border-left-color: var(--copyright-color);
+        }
+        
+        .card-All,
+        .card-Other {
+            border-left-color: var(--all-rights-color);
         }
         
         /* Card animation */
@@ -323,6 +364,13 @@
             }
             .form-layout {
                 flex-direction: column;
+            }
+            .header-content {
+                flex-direction: column;
+                gap: 10px;
+            }
+            .nav a {
+                margin-left: 15px;
             }
         }
     </style>
@@ -368,10 +416,13 @@
                                 <label class="form-label" for="focus">Step 2: What would you like to focus on today?</label>
                                 <select class="form-control" id="focus" required>
                                     <option value="" selected disabled>Select the outcome that most closely matches what you're looking to do</option>
+                                    <option value="understand">Understand if there's an issue to deal with</option>
                                     <option value="strengthen">Strengthen my position</option>
-                                    <option value="support">Get professional support</option>
+                                    <option value="support">Get support from a professional</option>
                                     <option value="agreement">Explore ways to reach agreement with someone</option>
-                                    <option value="prevent">Prevent potential infringement</option>
+                                    <option value="prevent_harm">Prevent harm to the public</option>
+                                    <option value="prevent_infringement">Prevent a potential infringement</option>
+                                    <option value="recoup">Recoup financial losses from another party</option>
                                 </select>
                             </div>
                             
@@ -382,6 +433,11 @@
                                     <option value="Trade mark (registered)">Registered trade mark</option>
                                     <option value="Patent">Patent</option>
                                     <option value="Design">Registered design</option>
+                                    <option value="Plant breeder">Plant breeder's right</option>
+                                    <option value="Unregistered trade mark">Unregistered trade mark or brand</option>
+                                    <option value="Copyright">Copyright</option>
+                                    <option value="Other">Other rights</option>
+                                    <option value="Unsure">I'm not sure</option>
                                 </select>
                             </div>
                         </div>
@@ -425,10 +481,13 @@
                 <div class="form-group">
                     <label class="form-label" for="focusFilter">What would you like to focus on today?</label>
                     <select class="form-control" id="focusFilter">
+                        <option value="understand">Understand if there's an issue to deal with</option>
                         <option value="strengthen">Strengthen my position</option>
-                        <option value="support">Get professional support</option>
+                        <option value="support">Get support from a professional</option>
                         <option value="agreement">Explore ways to reach agreement with someone</option>
-                        <option value="prevent">Prevent potential infringement</option>
+                        <option value="prevent_harm">Prevent harm to the public</option>
+                        <option value="prevent_infringement">Prevent a potential infringement</option>
+                        <option value="recoup">Recoup financial losses from another party</option>
                     </select>
                 </div>
                 
@@ -438,6 +497,11 @@
                         <option value="Trade mark (registered)">Registered trade mark</option>
                         <option value="Patent">Patent</option>
                         <option value="Design">Registered design</option>
+                        <option value="Plant breeder">Plant breeder's right</option>
+                        <option value="Unregistered trade mark">Unregistered trade mark or brand</option>
+                        <option value="Copyright">Copyright</option>
+                        <option value="Other">Other rights</option>
+                        <option value="Unsure">I'm not sure</option>
                     </select>
                 </div>
             </div>
@@ -479,7 +543,7 @@
         const guideTextContainer = document.getElementById('guideTextContainer');
         const guideText = document.getElementById('guideText');
 
-        // Guide Text Data (simplified)
+        // Guide Text Data (expanded)
         const guideTextData = [
             {
                 "User Goal": "Strengthen my position",
@@ -495,40 +559,205 @@
                 "User Goal": "Strengthen my position",
                 "IP Type": "Design",
                 "Guide Text": "A new product has a similar look to my registered design. I'm not sure if it's an issue, but I want to understand what I can do to protect my design."
+            },
+            {
+                "User Goal": "Get support from a professional",
+                "IP Type": "Trade mark (registered)",
+                "Guide Text": "I need to speak with an expert about how to enforce my registered trade mark against potential infringers."
+            },
+            {
+                "User Goal": "Explore ways to reach agreement with someone",
+                "IP Type": "Patent",
+                "Guide Text": "A competitor may be using technology similar to my patented invention. I'd like to find a way to resolve this without going to court."
+            },
+            {
+                "User Goal": "Prevent a potential infringement",
+                "IP Type": "Copyright",
+                "Guide Text": "I've created original creative content and I'm concerned others might copy it without permission. I want to know what preventative steps I can take."
+            },
+            {
+                "User Goal": "Understand if there's an issue to deal with",
+                "IP Type": "Unregistered trade mark",
+                "Guide Text": "Someone is using a similar business name to mine, but I don't have it registered as a trade mark. I'm trying to determine if I have any rights I can enforce."
             }
         ];
         
-        // IP Enforcement Options Data (simplified)
+        // IP Enforcement Options Data (expanded with all CSV data) 
         const ipOptionsData = [
             {
                 "Overtitle": "Patent opposition",
                 "Main Title": "Challenge a new or amended patent",
                 "Description": "Initiate a challenge to the validity of a new patent with IP Australia",
+                "Response Type": "Administrative proceeding",
                 "Right it applies to": "Patent"
             },
             {
                 "Overtitle": "Court - Patent",
                 "Main Title": "Seek binding, authoritative decisions",
                 "Description": "Escalate a wide range of patent matters to court",
+                "Response Type": "Legal proceeding",
                 "Right it applies to": "Patent"
             },
             {
                 "Overtitle": "Trade mark opposition",
                 "Main Title": "Challenge a new or amended trade mark",
                 "Description": "Initiate a challenge to a trade mark application with IP Australia",
+                "Response Type": "Administrative proceeding",
                 "Right it applies to": "Trade mark"
             },
             {
                 "Overtitle": "Warning letter",
                 "Main Title": "Send a formal notice",
                 "Description": "Communicate concerns and request action through a formal letter",
+                "Response Type": "Direct communication",
                 "Right it applies to": "Any"
             },
             {
                 "Overtitle": "IP Australia",
                 "Main Title": "Contact for general guidance",
                 "Description": "Reach out for general information about IP rights and processes",
+                "Response Type": "Support service",
                 "Right it applies to": "Any"
+            },
+            {
+                "Overtitle": "IP professional",
+                "Main Title": "Seek specialised advice",
+                "Description": "Get personalised advice from a qualified professional",
+                "Response Type": "Professional service",
+                "Right it applies to": "Any"
+            },
+            {
+                "Overtitle": "Licence",
+                "Main Title": "Allow others to use your IP",
+                "Description": "Create a formal agreement to permit usage under specific terms",
+                "Response Type": "Commercial arrangement",
+                "Right it applies to": "Any"
+            },
+            {
+                "Overtitle": "Non-use removal",
+                "Main Title": "Challenge an unused trade mark",
+                "Description": "Apply to have a trade mark removed for lack of use",
+                "Response Type": "Administrative proceeding",
+                "Right it applies to": "Trade mark"
+            },
+            {
+                "Overtitle": "Re-examination",
+                "Main Title": "Request review of an existing patent",
+                "Description": "Ask IP Australia to reconsider if a patent meets legal requirements",
+                "Response Type": "Administrative proceeding",
+                "Right it applies to": "Patent"
+            },
+            {
+                "Overtitle": "Court - Trade mark",
+                "Main Title": "Pursue legal action for trade mark matters",
+                "Description": "Take issues to court for binding judgement on trade mark rights",
+                "Response Type": "Legal proceeding",
+                "Right it applies to": "Trade mark"
+            },
+            {
+                "Overtitle": "Trade mark cancellation",
+                "Main Title": "Apply to cancel a registered trade mark",
+                "Description": "Request removal of a trade mark from the register",
+                "Response Type": "Administrative proceeding",
+                "Right it applies to": "Trade mark"
+            },
+            {
+                "Overtitle": "Australian Border Force",
+                "Main Title": "Prevent importation of infringing goods",
+                "Description": "Engage customs to stop counterfeit or infringing products at the border",
+                "Response Type": "Government intervention",
+                "Right it applies to": "Trade mark; Copyright"
+            },
+            {
+                "Overtitle": "Take down notice",
+                "Main Title": "Request removal of online content",
+                "Description": "Ask platforms to remove material that infringes your IP rights",
+                "Response Type": "Platform enforcement",
+                "Right it applies to": "Copyright; Trade mark"
+            },
+            {
+                "Overtitle": "Design opposition",
+                "Main Title": "Challenge a design registration",
+                "Description": "Object to a design application during the registration process",
+                "Response Type": "Administrative proceeding",
+                "Right it applies to": "Design"
+            },
+            {
+                "Overtitle": "Alternative dispute resolution",
+                "Main Title": "Resolve issues without court",
+                "Description": "Use mediation or arbitration to find mutually acceptable solutions",
+                "Response Type": "Negotiation process",
+                "Right it applies to": "Any"
+            },
+            {
+                "Overtitle": "Digital content protection",
+                "Main Title": "Prevent online distribution",
+                "Description": "Implement technical measures to control how content is shared",
+                "Response Type": "Technical solution",
+                "Right it applies to": "Copyright"
+            },
+            {
+                "Overtitle": "Plant breeder's right objection",
+                "Main Title": "Challenge a PBR application",
+                "Description": "Lodge a formal objection to a plant variety being registered",
+                "Response Type": "Administrative proceeding",
+                "Right it applies to": "Plant breeder"
+            },
+            {
+                "Overtitle": "Revocation - PBR",
+                "Main Title": "Challenge an existing plant variety",
+                "Description": "Apply to have a registered plant variety removed from the register",
+                "Response Type": "Administrative proceeding",
+                "Right it applies to": "Plant breeder"
+            },
+            {
+                "Overtitle": "Court - Design",
+                "Main Title": "Litigate design infringement",
+                "Description": "Take design rights disputes to court for resolution",
+                "Response Type": "Legal proceeding",
+                "Right it applies to": "Design"
+            },
+            {
+                "Overtitle": "Court - Copyright",
+                "Main Title": "Pursue copyright infringement",
+                "Description": "Seek legal remedies for unauthorized use of your work",
+                "Response Type": "Legal proceeding",
+                "Right it applies to": "Copyright"
+            },
+            {
+                "Overtitle": "Settlement agreement",
+                "Main Title": "Negotiate a resolution",
+                "Description": "Create a formal agreement to resolve an IP dispute",
+                "Response Type": "Negotiation outcome",
+                "Right it applies to": "Any"
+            },
+            {
+                "Overtitle": "Regulation enforcement",
+                "Main Title": "Report to regulatory bodies",
+                "Description": "Engage government agencies that oversee specific industries",
+                "Response Type": "Regulatory action",
+                "Right it applies to": "Any"
+            },
+            {
+                "Overtitle": "Passing off action",
+                "Main Title": "Protect unregistered rights",
+                "Description": "Take legal action against misrepresentation of goods or services",
+                "Response Type": "Legal proceeding",
+                "Right it applies to": "Unregistered trade mark"
+            },
+            {
+                "Overtitle": "Australian Consumer Law",
+                "Main Title": "Address misleading conduct",
+                "Description": "Use consumer protection laws to stop deceptive practices",
+                "Response Type": "Legal proceeding",
+                "Right it applies to": "Any"
+            },
+            {
+                "Overtitle": "Court - PBR",
+                "Main Title": "Litigate plant variety issues",
+                "Description": "Pursue court action for plant breeder's rights matters",
+                "Response Type": "Legal proceeding",
+                "Right it applies to": "Plant breeder"
             }
         ];
 
@@ -582,10 +811,13 @@
             
             // Map focus dropdown values to User Goal values
             const focusToGoalMap = {
+                'understand': 'Understand if there\'s an issue to deal with',
                 'strengthen': 'Strengthen my position',
-                'agreement': 'Explore ways to reach an agreement',
-                'prevent': 'Prevent potential infringement',
-                'support': 'Get professional support'
+                'support': 'Get support from a professional',
+                'agreement': 'Explore ways to reach agreement with someone',
+                'prevent_harm': 'Prevent harm to the public',
+                'prevent_infringement': 'Prevent a potential infringement',
+                'recoup': 'Recoup financial losses from another party'
             };
             
             const userGoal = focusToGoalMap[focusValue];
@@ -593,115 +825,4 @@
             // Find matching guide text
             let matchingGuideText = null;
             
-            if (userGoal && ipTypeValue) {
-                matchingGuideText = guideTextData.find(item => 
-                    item["User Goal"] === userGoal && 
-                    item["IP Type"] === ipTypeValue
-                );
-            }
-            
-            // Update the guide text
-            if (matchingGuideText) {
-                guideText.textContent = matchingGuideText["Guide Text"];
-                guideTextContainer.classList.add('active');
-                descriptionField.placeholder = matchingGuideText["Guide Text"];
-            } else {
-                guideText.textContent = "Select options above to see relevant examples...";
-                guideTextContainer.classList.remove('active');
-                descriptionField.placeholder = "This helps us show you content that may be more relevant.";
-            }
-        }
-        
-        // Show results page
-        function showResults() {
-            const situation = document.getElementById('situation').value;
-            const focus = document.getElementById('focus').value;
-            const ipType = document.getElementById('ipType').value;
-            const description = document.getElementById('description').value;
-            
-            // Show results container, hide prompt container
-            promptContainer.style.display = 'none';
-            resultsContainer.style.display = 'block';
-            
-            // Set filters to match form values
-            situationFilter.value = situation;
-            focusFilter.value = focus;
-            ipTypeFilter.value = ipType;
-            
-            // Display user description
-            userDescription.textContent = description || "No description provided.";
-            
-            // Generate results
-            generateResults(ipType);
-        }
-        
-        // Update results when filters change
-        function updateResults() {
-            generateResults(ipTypeFilter.value);
-        }
-        
-        // Generate results based on IP type
-        function generateResults(ipType) {
-            // Clear previous results
-            resultsGrid.innerHTML = '';
-            
-            // Map from dropdown value to data value
-            const ipTypeMap = {
-                'Trade mark (registered)': 'Trade mark'
-            };
-            
-            // Get the mapped value or use the original
-            const mappedIpType = ipTypeMap[ipType] || ipType;
-            
-            // Filter options based on IP type
-            const filteredOptions = ipOptionsData.filter(option => {
-                return option["Right it applies to"] === mappedIpType || 
-                       option["Right it applies to"] === "Any" || 
-                       option["Right it applies to"].includes(mappedIpType);
-            });
-            
-            // Create cards for each filtered option
-            filteredOptions.forEach((option, index) => {
-                const card = createCard(option);
-                card.style.animationDelay = `${index * 0.05}s`;
-                card.classList.add('card-animated');
-                resultsGrid.appendChild(card);
-            });
-            
-            // If no results, show a message
-            if (filteredOptions.length === 0) {
-                const noResults = document.createElement('div');
-                noResults.className = 'card';
-                noResults.innerHTML = `
-                    <h3 class="card-title">No options found</h3>
-                    <p>We couldn't find any specific options matching your criteria. Try adjusting your filters.</p>
-                `;
-                resultsGrid.appendChild(noResults);
-            }
-        }
-        
-        // Create a card element for an IP option
-        function createCard(option) {
-            const card = document.createElement('div');
-            card.className = `card card-${option["Right it applies to"].split(';')[0].trim().replace(/\s+/g, '-')}`;
-            
-            // Determine tag classes based on right it applies to
-            const rightTypes = option["Right it applies to"].split(';').map(type => type.trim());
-            const tagHtml = rightTypes.map(type => 
-                `<span class="feature-tag tag-${type.replace(/\s+/g, '-')}">${type}</span>`
-            ).join('');
-            
-            card.innerHTML = `
-                <div class="card-overtitle">${option.Overtitle}</div>
-                <h3 class="card-title">${option["Main Title"]}</h3>
-                <p>${option.Description}</p>
-                <div class="card-tags">
-                    ${tagHtml}
-                </div>
-            `;
-            
-            return card;
-        }
-    </script>
-</body>
-</html>
+            if (userGoal && ip
