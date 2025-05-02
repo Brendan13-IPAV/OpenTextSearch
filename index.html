@@ -638,438 +638,505 @@ const guideTextData = [
 
         // IP Enforcement Options Data (full set from CSV, without Response Type)
 const ipOptionsData = [
+   [
     {
         "Overtitle": "Patent opposition",
         "Main Title": "Challenge a new or amended patent",
         "Description": "Initiate a challenge to the validity of a new patent with IP Australia",
+        "Response Type": "Enforcement; Accused",
+        "Right it applies to": "Patent"
+    },
+    {
+        "Overtitle": "Patent re-examination",
+        "Main Title": "Challenge a granted patent",
+        "Description": "Request a re-examination with IP Australia, to revoke or amend a granted patent",
+        "Response Type": "Enforcement; Accused",
         "Right it applies to": "Patent"
     },
     {
         "Overtitle": "Court - Patent",
         "Main Title": "Seek binding, authoritative decisions",
         "Description": "Escalate a wide range of patent matters to court",
+        "Response Type": "Enforcement; Accused",
         "Right it applies to": "Patent"
     },
     {
         "Overtitle": "Trade mark opposition",
-        "Main Title": "Challenge a new or amended trade mark",
-        "Description": "Initiate a challenge to a trade mark application with IP Australia",
+        "Main Title": "Challenge the registration of a trade mark",
+        "Description": "Initiate a trade mark opposition process against a new trademark with IP Australia",
+        "Response Type": "Enforcement",
         "Right it applies to": "Trade mark"
     },
     {
-        "Overtitle": "Warning letter",
-        "Main Title": "Send a formal notice",
-        "Description": "Communicate concerns and request action through a formal letter",
-        "Right it applies to": "Any"
-    },
-    {
-        "Overtitle": "IP Australia",
-        "Main Title": "Contact for general guidance",
-        "Description": "Reach out for general information about IP rights and processes",
-        "Right it applies to": "Any"
-    },
-    {
-        "Overtitle": "IP professional",
-        "Main Title": "Seek specialised advice",
-        "Description": "Get personalised advice from a qualified professional",
-        "Right it applies to": "Any"
-    },
-    {
-        "Overtitle": "Licence",
-        "Main Title": "Allow others to use your IP",
-        "Description": "Create a formal agreement to permit usage under specific terms",
-        "Right it applies to": "Any"
-    },
-    {
-        "Overtitle": "Non-use removal",
-        "Main Title": "Challenge an unused trade mark",
-        "Description": "Apply to have a trade mark removed for lack of use",
+        "Overtitle": "Trade mark registration revocation",
+        "Main Title": "Remove a trade mark from the register",
+        "Description": "Let IP Australia know a recently registered trade mark should not have been registered",
+        "Response Type": "Enforcement",
         "Right it applies to": "Trade mark"
     },
     {
-        "Overtitle": "Re-examination",
-        "Main Title": "Request review of an existing patent",
-        "Description": "Ask IP Australia to reconsider if a patent meets legal requirements",
-        "Right it applies to": "Patent"
-    },
-    {
-        "Overtitle": "Court - Trade mark",
-        "Main Title": "Pursue legal action for trade mark matters",
-        "Description": "Take issues to court for binding judgement on trade mark rights",
+        "Overtitle": "Trade mark non-use action",
+        "Main Title": "Remove a trade mark from the register",
+        "Description": "Request IP Australia removes a trade mark from the register for non-use",
+        "Response Type": "Enforcement",
         "Right it applies to": "Trade mark"
     },
     {
-        "Overtitle": "Trade mark cancellation",
-        "Main Title": "Apply to cancel a registered trade mark",
-        "Description": "Request removal of a trade mark from the register",
+        "Overtitle": "Court - Trade Mark",
+        "Main Title": "Seek binding, authoritative decisions",
+        "Description": "Escalate a wide range of trade mark matters to court",
+        "Response Type": "Enforcement; Accused",
         "Right it applies to": "Trade mark"
     },
     {
-        "Overtitle": "Australian Border Force",
-        "Main Title": "Prevent importation of infringing goods",
-        "Description": "Engage customs to stop counterfeit or infringing products at the border",
+        "Overtitle": "Interim court injuction order",
+        "Main Title": "Stop infringing activity immediately",
+        "Description": "Lodge an interim injunction order through court",
+        "Response Type": "Enforcement",
+        "Right it applies to": "Any"
+    },
+    {
+        "Overtitle": "World IP Organisation (WIPO) ",
+        "Main Title": "Resolve international disputes",
+        "Description": "Seek dispute resolution through the WIPO Arbitration and Mediation Center",
+        "Response Type": "Enforcement",
+        "Right it applies to": "Any"
+    },
+    {
+        "Overtitle": "Alternative dispute resolution (ADR)",
+        "Main Title": "resolve conflicts with the help of experienced facilitators",
+        "Description": "Understand more about the options in the ADR space.",
+        "Response Type": "Enforcement; Accused",
+        "Right it applies to": "Any"
+    },
+    {
+        "Overtitle": "ASBFEO",
+        "Main Title": "Access help tailored to resolve business disputes",
+        "Description": "Australia Small Business & Family Enterprise Ombudsman (ASBFEO).",
+        "Response Type": "Enforcement; Accused",
+        "Right it applies to": "Any"
+    },
+    {
+        "Overtitle": "Mediation",
+        "Main Title": "Resolve IP issues with the help of a third party",
+        "Description": "Invite the other party to enter into mediation to agree to mutually acceptable agreement.",
+        "Response Type": "Enforcement",
+        "Right it applies to": "Any"
+    },
+    {
+        "Overtitle": "Arbitration",
+        "Main Title": "Resolve IP issues with the help of a third party",
+        "Description": "Agree to be bound by the decision of a highly qualified third party assessment.",
+        "Response Type": "Enforcement",
+        "Right it applies to": "Any"
+    },
+    {
+        "Overtitle": "Letter of demand",
+        "Main Title": "Demand the other party stops infringing",
+        "Description": "Send a letter to the infringing party notifying them of potential infringement.",
+        "Response Type": "Enforcement",
+        "Right it applies to": "Any"
+    },
+    {
+        "Overtitle": "Informal contact",
+        "Main Title": "Provide an opportunity to stop infringement",
+        "Description": "Alert the alleged infringer of your registered rights to allow them to stop infringing.",
+        "Response Type": "Enforcement",
+        "Right it applies to": "Any"
+    },
+    {
+        "Overtitle": "Informal contact",
+        "Main Title": "Respond informally to accusations of IP infringement",
+        "Description": "Let the accuser know about your circumstances.",
+        "Response Type": "Accused",
+        "Right it applies to": "Any"
+    },
+    {
+        "Overtitle": "Negotiation",
+        "Main Title": "Agree to a commercial arrangement",
+        "Description": "Work with an IP professional to come to an agreement with another party.",
+        "Response Type": "Enforcement; Accused",
+        "Right it applies to": "Any"
+    },
+    {
+        "Overtitle": "Takedown request",
+        "Main Title": "Stop infringement facilitated online",
+        "Description": "Request infringing material is removed from online marketplaces and platforms.",
+        "Response Type": "Enforcement",
         "Right it applies to": "Trade mark; Copyright"
     },
     {
-        "Overtitle": "Take down notice",
-        "Main Title": "Request removal of online content",
-        "Description": "Ask platforms to remove material that infringes your IP rights",
-        "Right it applies to": "Copyright; Trade mark"
-    },
-    {
-        "Overtitle": "Design opposition",
-        "Main Title": "Challenge a design registration",
-        "Description": "Object to a design application during the registration process",
-        "Right it applies to": "Design"
-    },
-    {
-        "Overtitle": "Alternative dispute resolution",
-        "Main Title": "Resolve issues without court",
-        "Description": "Use mediation or arbitration to find mutually acceptable solutions",
+        "Overtitle": "Report IP crime or safety concerns",
+        "Main Title": "Prevent risks to public interest",
+        "Description": "Inform Government about risks to public health, crime, counterfeiting, frauds & scams.",
+        "Response Type": "Enforcement",
         "Right it applies to": "Any"
     },
     {
-        "Overtitle": "Digital content protection",
-        "Main Title": "Prevent online distribution",
-        "Description": "Implement technical measures to control how content is shared",
-        "Right it applies to": "Copyright"
-    },
-    {
-        "Overtitle": "Plant breeder's right objection",
-        "Main Title": "Challenge a PBR application",
-        "Description": "Lodge a formal objection to a plant variety being registered",
-        "Right it applies to": "Plant breeder"
-    },
-    {
-        "Overtitle": "Revocation - PBR",
-        "Main Title": "Challenge an existing plant variety",
-        "Description": "Apply to have a registered plant variety removed from the register",
-        "Right it applies to": "Plant breeder"
-    },
-    {
-        "Overtitle": "Court - Design",
-        "Main Title": "Litigate design infringement",
-        "Description": "Take design rights disputes to court for resolution",
-        "Right it applies to": "Design"
-    },
-    {
-        "Overtitle": "Court - Copyright",
-        "Main Title": "Pursue copyright infringement",
-        "Description": "Seek legal remedies for unauthorised use of your work",
-        "Right it applies to": "Copyright"
-    },
-    {
-        "Overtitle": "Settlement agreement",
-        "Main Title": "Negotiate a resolution",
-        "Description": "Create a formal agreement to resolve an IP dispute",
-        "Right it applies to": "Any"
-    },
-    {
-        "Overtitle": "Regulation enforcement",
-        "Main Title": "Report to regulatory bodies",
-        "Description": "Engage government agencies that oversee specific industries",
-        "Right it applies to": "Any"
-    },
-    {
-        "Overtitle": "Passing off action",
-        "Main Title": "Protect unregistered rights",
-        "Description": "Take legal action against misrepresentation of goods or services",
-        "Right it applies to": "Unregistered trade mark"
-    },
-    {
-        "Overtitle": "Australian Consumer Law",
-        "Main Title": "Address misleading conduct",
-        "Description": "Use consumer protection laws to stop deceptive practices",
-        "Right it applies to": "Any"
-    },
-    {
-        "Overtitle": "Court - PBR",
-        "Main Title": "Litigate plant variety issues",
-        "Description": "Pursue court action for plant breeder's rights matters",
-        "Right it applies to": "Plant breeder"
-    },
-    {
-        "Overtitle": "Industry body complaint",
-        "Main Title": "Report to relevant association",
-        "Description": "Raise concerns with professional or trade organisations",
-        "Right it applies to": "Any"
-    },
-    {
-        "Overtitle": "Investigation",
-        "Main Title": "Gather evidence and information",
-        "Description": "Research the situation to understand potential infringement",
-        "Right it applies to": "Any"
-    },
-    {
-        "Overtitle": "IP audit",
-        "Main Title": "Assess your IP portfolio",
-        "Description": "Review existing IP assets to identify gaps and opportunities",
-        "Right it applies to": "Any"
-    },
-    {
-        "Overtitle": "IP register monitoring",
-        "Main Title": "Track new applications",
-        "Description": "Stay informed about new IP filings that might affect your rights",
-        "Right it applies to": "Patent; Trade mark; Design; Plant breeder"
-    },
-    {
-        "Overtitle": "Freedom to operate search",
-        "Main Title": "Check for existing rights",
-        "Description": "Investigate whether your product might infringe others' IP",
-        "Right it applies to": "Patent; Trade mark; Design"
-    },
-    {
-        "Overtitle": "Trade mark - Application",
-        "Main Title": "Apply for registration",
-        "Description": "Protect your brand by registering a trade mark",
-        "Right it applies to": "Trade mark"
-    },
-    {
-        "Overtitle": "Patent - Application",
-        "Main Title": "Apply for registration",
-        "Description": "Protect your invention by registering a patent",
-        "Right it applies to": "Patent"
-    },
-    {
-        "Overtitle": "Design - Application",
-        "Main Title": "Apply for registration",
-        "Description": "Protect your design by registering it",
-        "Right it applies to": "Design"
-    },
-    {
-        "Overtitle": "PBR - Application",
-        "Main Title": "Apply for registration",
-        "Description": "Protect your plant variety by registering for PBR",
-        "Right it applies to": "Plant breeder"
-    },
-    {
-        "Overtitle": "Patent - Divisional",
-        "Main Title": "File a related patent",
-        "Description": "Submit a new application based on your existing patent application",
-        "Right it applies to": "Patent"
-    },
-    {
-        "Overtitle": "Trade mark - Divisional",
-        "Main Title": "Split your trade mark application",
-        "Description": "Create multiple applications from one original filing",
-        "Right it applies to": "Trade mark"
-    },
-    {
-        "Overtitle": "Copyright notice",
-        "Main Title": "Mark your works",
-        "Description": "Add notices to show ownership of your copyright material",
-        "Right it applies to": "Copyright"
-    },
-    {
-        "Overtitle": "Confidentiality agreement",
-        "Main Title": "Protect sensitive information",
-        "Description": "Establish legal obligations to maintain secrecy",
-        "Right it applies to": "Any"
-    },
-    {
-        "Overtitle": "Patent marking",
-        "Main Title": "Label your products",
-        "Description": "Indicate patent protection on your goods",
-        "Right it applies to": "Patent"
-    },
-    {
-        "Overtitle": "Market survey",
-        "Main Title": "Gather consumer perceptions",
-        "Description": "Collect data about confusion or recognition in the marketplace",
-        "Right it applies to": "Trade mark; Unregistered trade mark"
-    },
-    {
-        "Overtitle": "IP valuation",
-        "Main Title": "Determine commercial worth",
-        "Description": "Assess the financial value of your intellectual property",
-        "Right it applies to": "Any"
-    },
-    {
-        "Overtitle": "Legal opinion",
-        "Main Title": "Get expert legal assessment",
-        "Description": "Request formal analysis of your legal position from a qualified specialist",
-        "Right it applies to": "Any"
-    },
-    {
-        "Overtitle": "Expert report",
-        "Main Title": "Obtain technical analysis",
-        "Description": "Commission specialised review of technical or scientific aspects",
-        "Right it applies to": "Patent; Plant breeder"
-    },
-    {
-        "Overtitle": "Customs notice",
-        "Main Title": "Request border seizures",
-        "Description": "File formal notification with customs authorities about infringing imports",
+        "Overtitle": "Notice of Objection",
+        "Main Title": "Stop infringing goods entering the country",
+        "Description": "Lodge a notice of objection with the Australian Border Force.",
+        "Response Type": "Enforcement; Proactive",
         "Right it applies to": "Trade mark; Copyright"
     },
     {
-        "Overtitle": "Online marketplace complaint",
-        "Main Title": "Report to sales platforms",
-        "Description": "Notify online marketplaces about infringing listings",
-        "Right it applies to": "Trade mark; Copyright; Design"
+        "Overtitle": "IP attorney or lawyer",
+        "Main Title": "Obtain legal advice on enforcement options",
+        "Description": "Seek a qualified & experienced professional to provide specific, tailored advice.",
+        "Response Type": "Enforcement; Proactive; Accused",
+        "Right it applies to": "Any"
     },
     {
-        "Overtitle": "Search engine delisting",
-        "Main Title": "Request content removal from search results",
-        "Description": "Ask search engines to remove infringing content from their listings",
-        "Right it applies to": "Copyright; Trade mark"
+        "Overtitle": "International options",
+        "Main Title": "Enforce your IP overseas",
+        "Description": "Understand options relating to enforcing your IP overseas. ",
+        "Response Type": "Enforcement",
+        "Right it applies to": "Any"
     },
     {
-        "Overtitle": "Social media complaint",
-        "Main Title": "Report infringing content",
-        "Description": "Use platform mechanisms to address IP violations on social networks",
-        "Right it applies to": "Copyright; Trade mark"
+        "Overtitle": "Monitor the situation",
+        "Main Title": "Take no immediate action",
+        "Description": "Strategically enforce your IP only when worthwhile.",
+        "Response Type": "Enforcement; Accused",
+        "Right it applies to": "Any"
     },
     {
-        "Overtitle": "Domain name dispute",
-        "Main Title": "Challenge website addresses",
-        "Description": "Initiate proceedings against infringing domain names",
-        "Right it applies to": "Trade mark; Unregistered trade mark"
+        "Overtitle": "Rebrand your business",
+        "Main Title": "Avoid potential IP conflicts",
+        "Description": "Strategically rebrand your business to avoid disputes.",
+        "Response Type": "Enforcement",
+        "Right it applies to": "Trade mark"
     },
     {
         "Overtitle": "IP insurance",
-        "Main Title": "Get financial protection",
-        "Description": "Obtain coverage for enforcement costs or infringement claims",
-        "Right it applies to": "Any"
+        "Main Title": "Coverage against potential future infringement",
+        "Description": "Protect yourself from certain costs involved in IP disputes",
+        "Response Type": "Proactive",
+        "Right it applies to": "Patents; Trade mark; Copyright"
     },
     {
-        "Overtitle": "Advertising regulator complaint",
-        "Main Title": "Report misleading promotion",
-        "Description": "Notify advertising standards bodies about deceptive marketing",
-        "Right it applies to": "Trade mark; Unregistered trade mark"
-    },
-    {
-        "Overtitle": "Criminal complaint",
-        "Main Title": "Report to law enforcement",
-        "Description": "Involve police or prosecutors for serious IP crimes",
-        "Right it applies to": "Copyright; Trade mark"
-    },
-    {
-        "Overtitle": "Design right overlap review",
-        "Main Title": "Explore copyright protection",
-        "Description": "Assess whether your design might also be protected by copyright",
-        "Right it applies to": "Design; Copyright"
-    },
-    {
-        "Overtitle": "Patent watch service",
-        "Main Title": "Monitor competitor activities",
-        "Description": "Subscribe to updates about new patents in your field",
-        "Right it applies to": "Patent"
-    },
-    {
-        "Overtitle": "International filings",
-        "Main Title": "Expand protection overseas",
-        "Description": "Extend your IP rights to other countries",
-        "Right it applies to": "Patent; Trade mark; Design; Plant breeder"
-    },
-    {
-        "Overtitle": "Cross-licensing",
-        "Main Title": "Exchange IP rights",
-        "Description": "Create mutual agreements allowing use of each other's IP",
-        "Right it applies to": "Patent; Copyright"
-    },
-    {
-        "Overtitle": "Patent pool",
-        "Main Title": "Join collaborative licensing",
-        "Description": "Participate in multi-party agreements to share patent rights",
-        "Right it applies to": "Patent"
-    },
-    {
-        "Overtitle": "Royalty audit",
-        "Main Title": "Verify payment compliance",
-        "Description": "Examine records to ensure correct payments under IP agreements",
-        "Right it applies to": "Any"
-    },
-    {
-        "Overtitle": "Declaratory proceedings",
-        "Main Title": "Seek court clarification",
-        "Description": "Ask a court to determine rights or obligations",
-        "Right it applies to": "Any"
-    },
-    {
-        "Overtitle": "Employee agreements",
-        "Main Title": "Secure ownership of workplace creations",
-        "Description": "Establish clear terms about IP created during employment",
-        "Right it applies to": "Any"
-    },
-    {
-        "Overtitle": "Assignment",
-        "Main Title": "Transfer ownership",
-        "Description": "Formally change who owns the IP rights",
-        "Right it applies to": "Any"
-    },
-    {
-        "Overtitle": "Sale of business",
-        "Main Title": "Include IP in business transfer",
-        "Description": "Ensure IP assets are properly handled during acquisition",
-        "Right it applies to": "Any"
-    },
-    {
-        "Overtitle": "Industry standards participation",
-        "Main Title": "Influence technical standards",
-        "Description": "Join standards-setting organisations to shape industry practices",
-        "Right it applies to": "Patent"
-    },
-    {
-        "Overtitle": "Open source licensing",
-        "Main Title": "Share with specific permissions",
-        "Description": "Make your work available under standardised open terms",
-        "Right it applies to": "Copyright"
-    },
-    {
-        "Overtitle": "Trade secret protection",
-        "Main Title": "Maintain confidentiality",
-        "Description": "Implement measures to keep valuable information secret",
-        "Right it applies to": "Other"
-    },
-    {
-        "Overtitle": "Parallel import assessment",
-        "Main Title": "Review international distribution",
-        "Description": "Determine if unauthorised imports infringe your rights",
-        "Right it applies to": "Trade mark; Copyright"
-    },
-    {
-        "Overtitle": "Public interest defence",
-        "Main Title": "Assert legitimate use exception",
-        "Description": "Claim that use is justified for public benefit reasons",
-        "Right it applies to": "Copyright; Patent"
-    },
-    {
-        "Overtitle": "Third party observations",
-        "Main Title": "Submit comments on pending applications",
-        "Description": "Provide information to IP offices about applications under examination",
-        "Right it applies to": "Patent; Trade mark; Design; Plant breeder"
-    },
-    {
-        "Overtitle": "TM headstart",
-        "Main Title": "Get preliminary assessment",
-        "Description": "Request early feedback on trade mark application prospects",
+        "Overtitle": "Domain Name Dispute (auDRP)",
+        "Main Title": "Dispute a domain name that infringes your trade mark",
+        "Description": "Dispute an .au domain name that may infringe an IP right",
+        "Response Type": "Enforcement",
         "Right it applies to": "Trade mark"
     },
     {
-        "Overtitle": "Patent protest",
-        "Main Title": "Submit prior art",
-        "Description": "Provide evidence that might prevent a patent from being granted",
-        "Right it applies to": "Patent"
-    },
-    {
-        "Overtitle": "TM non-use defence",
-        "Main Title": "Challenge enforcement based on non-use",
-        "Description": "Counter trade mark claims by showing the mark hasn't been properly used",
+        "Overtitle": "Domain Name Dispute (UDRP)",
+        "Main Title": "Challenge the use of international domain name",
+        "Description": "Dispute an international domain name that may infringe an IP right",
+        "Response Type": "Enforcement",
         "Right it applies to": "Trade mark"
     },
     {
-        "Overtitle": "Innovation patent",
-        "Main Title": "Apply for simpler protection",
-        "Description": "Seek a lower-threshold, shorter-term patent right",
+        "Overtitle": "Apply for a trade mark ",
+        "Main Title": "Register your trade mark  ",
+        "Description": "Strengthen your position as the registered owner of your trade mark in Australia",
+        "Response Type": "Proactive; Enforcement",
+        "Right it applies to": "Trade mark"
+    },
+    {
+        "Overtitle": "Contact intermediaries",
+        "Main Title": "Engage with product distributors",
+        "Description": "Establish and maintain connections with suppliers, manufacturers, and resellers of your goods.",
+        "Response Type": "Proactive; Enforcement",
+        "Right it applies to": "Any"
+    },
+    {
+        "Overtitle": "IP audits",
+        "Main Title": "Review your IP portfolio",
+        "Description": "Understand and assess the health and enforceability of your IP.",
+        "Response Type": "Proactive",
+        "Right it applies to": "Any"
+    },
+    {
+        "Overtitle": "Registration",
+        "Main Title": "Register your trade mark",
+        "Description": "Apply to register your trade mark with IP Australia.",
+        "Response Type": "Proactive; Enforcement; Accused ",
+        "Right it applies to": "Trade marks"
+    },
+    {
+        "Overtitle": "IP licensing",
+        "Main Title": "License your IP rights",
+        "Description": "Let others use your trade mark under agreed terms.",
+        "Response Type": "Proactive",
+        "Right it applies to": "Any"
+    },
+    {
+        "Overtitle": "Legislation",
+        "Main Title": "Understand relevant laws",
+        "Description": "Review the laws that protect and govern your trade mark rights.",
+        "Response Type": "Proactive",
+        "Right it applies to": "Trade marks"
+    },
+    {
+        "Overtitle": "Monitoring service - TMs",
+        "Main Title": "Monitor for infringement",
+        "Description": "Get alerts when others use similar trade marks.",
+        "Response Type": "Proactive",
+        "Right it applies to": "Trade marks"
+    },
+    {
+        "Overtitle": "Monitoring service - Designs",
+        "Main Title": "Monitor for infringement",
+        "Description": "Get alerts when others offer similar designs for sale.",
+        "Response Type": "Proactive",
+        "Right it applies to": "Designs"
+    },
+    {
+        "Overtitle": "Inspector service",
+        "Main Title": "Send inspectors to farms or nurseries",
+        "Description": "Get alerts when others are growing your plant varieties without compensation",
+        "Response Type": "Proactive",
+        "Right it applies to": "PBR"
+    },
+    {
+        "Overtitle": "In-house expertise",
+        "Main Title": "Employ IP specialists",
+        "Description": "Hire specialists to manage your business IP matters.",
+        "Response Type": "Proactive",
+        "Right it applies to": "Any"
+    },
+    {
+        "Overtitle": "Customer awareness",
+        "Main Title": "Educate your customers",
+        "Description": "Help customers recognise and choose your brand above others.",
+        "Response Type": "Proactive",
+        "Right it applies to": "Any"
+    },
+    {
+        "Overtitle": "Supply chain protection",
+        "Main Title": "Monitor supply chains",
+        "Description": "Identify key stakeholders in your product's supply chain to protect your interests.",
+        "Response Type": "Proactive",
+        "Right it applies to": "Any"
+    },
+    {
+        "Overtitle": "Proactive strategy",
+        "Main Title": "Plan offensive actions",
+        "Description": "Implement proactive measures to protect your IP, including legal actions.",
+        "Response Type": "Proactive",
+        "Right it applies to": "Any"
+    },
+    {
+        "Overtitle": "Defensive strategy",
+        "Main Title": "Implement defensive measures",
+        "Description": "Identify ways to protect your business without commencing legal action.",
+        "Response Type": "Proactive",
+        "Right it applies to": "Any"
+    },
+    {
+        "Overtitle": "Market presence",
+        "Main Title": "Use your IP actively",
+        "Description": "Ensure your IP is actively used in the market to maintain rights.",
+        "Response Type": "Proactive",
+        "Right it applies to": "Trade marks"
+    },
+    {
+        "Overtitle": "Online protection",
+        "Main Title": "Register with brand platforms",
+        "Description": "Strengthen your standing in online marketplaces like Amazon Brand Registry.",
+        "Response Type": "Proactive",
+        "Right it applies to": "Trade marks"
+    },
+    {
+        "Overtitle": "Risk assessment",
+        "Main Title": "Predict potential infringement",
+        "Description": "Determine likely areas of IP infringement to strengthen your response plan.",
+        "Response Type": "Proactive",
+        "Right it applies to": "Any"
+    },
+    {
+        "Overtitle": "Register monitoring",
+        "Main Title": "Track similar registrations",
+        "Description": "Set up alerts when others try to register similar trade marks.",
+        "Response Type": "Proactive",
+        "Right it applies to": "Trade mark"
+    },
+    {
+        "Overtitle": "Patent comparison",
+        "Main Title": "Compare patent claims",
+        "Description": "Evaluate similarities and differences between patent claims to assess scope and potential infringement.",
+        "Response Type": "Proactive",
         "Right it applies to": "Patent"
     },
     {
-        "Overtitle": "Registered design overlap",
-        "Main Title": "Explore design protection",
-        "Description": "Assess whether elements of your patent might also qualify for design registration",
-        "Right it applies to": "Patent; Design"
+        "Overtitle": "IP search",
+        "Main Title": "Find and understand existing IP rights",
+        "Description": "Discover existing IP rights that may impact your business decisions.",
+        "Response Type": "Proactive",
+        "Right it applies to": "All types"
+    },
+    {
+        "Overtitle": "Portfolio expansion",
+        "Main Title": "Apply for additional IP rights",
+        "Description": "Extend your IP protection by securing additional rights in relevant categories.",
+        "Response Type": "Proactive",
+        "Right it applies to": "All types"
+    },
+    {
+        "Overtitle": "Market entry assessment",
+        "Main Title": "Request a freedom to operate search",
+        "Description": "Determine if your product or service might infringe on existing IP rights.",
+        "Response Type": "Proactive",
+        "Right it applies to": "All types"
+    },
+    {
+        "Overtitle": "IP audits",
+        "Main Title": "Commission an IP rights audit",
+        "Description": "Obtain a comprehensive assessment of your existing IP assets and protections.",
+        "Response Type": "Proactive",
+        "Right it applies to": "All types"
+    },
+    {
+        "Overtitle": "Commercialisation",
+        "Main Title": "Develop a strategy to make money from your IP",
+        "Description": "Create an integrated plan to leverage your IP assets for business growth.",
+        "Response Type": "Proactive",
+        "Right it applies to": "All types"
+    },
+    {
+        "Overtitle": "Negotiate a resolution",
+        "Main Title": "Engage constructively with rights holders",
+        "Description": "Make mutually beneficial deals with other IP rights owners.",
+        "Response Type": "Accused",
+        "Right it applies to": "All types"
+    },
+    {
+        "Overtitle": "IP valuation",
+        "Main Title": "Determine the value of IP",
+        "Description": "Get professional assessment of the financial worth of specific intellectual property.",
+        "Response Type": "Accused; Enforcement",
+        "Right it applies to": "All types"
+    },
+    {
+        "Overtitle": "IP assessment",
+        "Main Title": "Gather detailed information",
+        "Description": "Obtain expert insights about your specific IP situation and options.",
+        "Response Type": "Proactive",
+        "Right it applies to": "All types"
+    },
+    {
+        "Overtitle": "Finding an IP professional",
+        "Main Title": "Preparing for your IP professional consultation",
+        "Description": "Make the most of initial meetings with IP professionals through proper preparation.",
+        "Response Type": "Proactive; Accused; Enforcement",
+        "Right it applies to": "All types"
+    },
+    {
+        "Overtitle": "Ownership disputes",
+        "Main Title": "Resolve ownership conflicts",
+        "Description": "Negotiate solutions to IP ownership disputes with professional guidance.",
+        "Response Type": "Proactive; Accused; Enforcement",
+        "Right it applies to": "Patents; Designs"
+    },
+    {
+        "Overtitle": "Check for spam",
+        "Main Title": "Read their accusation carefully",
+        "Description": "Consider their allegations and whether their contact letter seems legitimate",
+        "Response Type": "Accused ",
+        "Right it applies to": "Any"
+    },
+    {
+        "Overtitle": "Counterclaims",
+        "Main Title": "File a counterclaim",
+        "Description": "Consider if it's appropriate to take infringement action against the other party",
+        "Response Type": "Accused",
+        "Right it applies to": ""
+    },
+    {
+        "Overtitle": "Review their IP",
+        "Main Title": "Check the other party's IP",
+        "Description": "Make sure they have valid IP and raise any issues with these",
+        "Response Type": "Proactive; Accused",
+        "Right it applies to": "All types"
+    },
+    {
+        "Overtitle": "Designs certification",
+        "Main Title": "Certify your registered design",
+        "Description": "Make sure your registered design is fully protected against infringement",
+        "Response Type": "Proactive; Enforcement",
+        "Right it applies to": "Designs"
+    },
+    {
+        "Overtitle": "Request designs examination",
+        "Main Title": "Request examination of a registered design",
+        "Description": "Ask IP Australia to assess someone's registered design for validity ",
+        "Response Type": "Proactive; Accused",
+        "Right it applies to": "Designs"
+    },
+    {
+        "Overtitle": "Court - PBR",
+        "Main Title": "Seek binding, authoritative decisions",
+        "Description": "Take PBR infringement or violation of licensing terms to court",
+        "Response Type": "Enforcement",
+        "Right it applies to": "PBR"
+    },
+    {
+        "Overtitle": "Farm saved seed",
+        "Main Title": "Consider exemptions",
+        "Description": "Check if you qualify for an exemption for items propagated on your farm",
+        "Response Type": "Accused",
+        "Right it applies to": "PBR"
+    },
+    {
+        "Overtitle": "Licensing agreements",
+        "Main Title": "Review licensing arrangements",
+        "Description": "Check any existing licencing agreements to ensure you're complying",
+        "Response Type": "Accused ",
+        "Right it applies to": "Any"
+    },
+    {
+        "Overtitle": "PBR contracts",
+        "Main Title": "Set up propagation contracts",
+        "Description": "Set up licencing terms for customers which assign royalties to propagation or non-propagation arrangments",
+        "Response Type": "Proactive",
+        "Right it applies to": "PBR"
+    },
+    {
+        "Overtitle": "PBR rights extension",
+        "Main Title": "Extend your PBR rights",
+        "Description": "Claim further PBR rights over certain harvested materials, dependent and essentially derived varieties",
+        "Response Type": "Enforcement",
+        "Right it applies to": "PBR"
+    },
+    {
+        "Overtitle": "Court - Designs",
+        "Main Title": "Seek binding, authoritative decisions",
+        "Description": "Enforce your certified designs right through the court system",
+        "Response Type": "Enforcement",
+        "Right it applies to": "Designs"
+    },
+    {
+        "Overtitle": "PBR grant objections",
+        "Main Title": "Object to a PBR",
+        "Description": "Object to the granting of a PBR with IP Australia",
+        "Response Type": "Enforcement",
+        "Right it applies to": "PBR"
+    },
+    {
+        "Overtitle": "Unjust threats",
+        "Main Title": "Take action against unjust threats",
+        "Description": "Take another party to court for making ungrounded accusions of infringement",
+        "Response Type": "Enforcement",
+        "Right it applies to": "Any"
+    },
+    {
+        "Overtitle": "Stop infringing activity",
+        "Main Title": "Cease using the IP",
+        "Description": "Stop using the IP you're accused of infringing ",
+        "Response Type": "Accused",
+        "Right it applies to": "Any"
+    },
+    {
+        "Overtitle": "Contact intermediaries",
+        "Main Title": "Alert your supply chain to issues",
+        "Description": "Ask intermediaries to cease enabling infringement",
+        "Response Type": "Enforcement",
+        "Right it applies to": "Any"
     }
+  
 ];
 
         // DOM Elements
