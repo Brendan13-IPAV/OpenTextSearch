@@ -638,8 +638,7 @@ const guideTextData = [
 
         // IP Enforcement Options Data (full set from CSV, without Response Type)
 const ipOptionsData = [
-   [
-    {
+       {
         "Overtitle": "Patent opposition",
         "Main Title": "Challenge a new or amended patent",
         "Description": "Initiate a challenge to the validity of a new patent with IP Australia",
@@ -1320,6 +1319,7 @@ function createCard(option) {
         `<span class="feature-tag tag-${type.replace(/\s+/g, '-')}">${type}</span>`
     ).join('');
     
+    // Create card HTML
     card.innerHTML = `
         <div class="card-overtitle">${option.Overtitle}</div>
         <h3 class="card-title">${option["Main Title"]}</h3>
