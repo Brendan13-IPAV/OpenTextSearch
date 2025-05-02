@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IP Enforcement Options Prototype</title>
+    <title>IP Enforcement Options</title>
     <style>
+        /* Base styles */
         :root {
             --dark-blue: #1D2939;
             --teal: #55ABC9;
@@ -32,14 +33,11 @@
             padding: 0;
         }
 
-        h1, h2, h3 {
-            margin-top: 0;
-        }
-
         h1 {
             font-size: 28px;
             font-weight: 600;
             color: var(--teal);
+            margin-top: 0;
         }
 
         h2 {
@@ -47,11 +45,13 @@
             font-weight: 500;
             color: var(--text-primary);
             margin-bottom: 20px;
+            margin-top: 0;
         }
 
         h3 {
             font-size: 18px;
             font-weight: 600;
+            margin-top: 0;
         }
 
         .container {
@@ -60,6 +60,7 @@
             padding: 0 20px;
         }
 
+        /* Header styling */
         .header {
             background-color: var(--dark-blue);
             color: white;
@@ -108,6 +109,7 @@
             min-height: 300px;
         }
 
+        /* Card styling */
         .card {
             background-color: white;
             border-radius: 8px;
@@ -122,42 +124,14 @@
             transform: translateY(-3px);
             box-shadow: 0 4px 6px rgba(16, 24, 40, 0.1);
         }
-        
-        .card-updating {
-            opacity: 0;
-            transform: translateY(10px);
+
+        .card-title {
+            font-weight: 600;
+            font-size: 18px;
+            margin-bottom: 10px;
         }
 
-        .feature-tag {
-            display: inline-block;
-            background-color: #EBF5FF;
-            color: var(--teal);
-            font-size: 12px;
-            padding: 4px 8px;
-            border-radius: 4px;
-            margin-right: 8px;
-            margin-bottom: 5px;
-        }
-        
-        /* IP-specific tags and card borders */
-        .tag-Patent {
-            background-color: rgba(29, 167, 175, 0.15);
-            color: var(--patent-color);
-        }
-        
-        .tag-Trade-mark {
-            background-color: rgba(222, 67, 38, 0.15);
-            color: var(--trademark-color);
-        }
-        
-        .card-Patent {
-            border-left-color: var(--patent-color);
-        }
-        
-        .card-Trade-mark {
-            border-left-color: var(--trademark-color);
-        }
-
+        /* Form elements */
         .form-group {
             margin-bottom: 20px;
         }
@@ -182,6 +156,7 @@
             box-shadow: 0 0 0 3px rgba(85, 171, 201, 0.15);
         }
 
+        /* Buttons */
         .btn {
             padding: 10px 16px;
             border-radius: 6px;
@@ -218,6 +193,7 @@
             display: inline-block;
         }
 
+        /* Layout classes */
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -264,6 +240,7 @@
             color: var(--text-primary);
         }
         
+        /* Results page styling */
         .filters-panel {
             background-color: white;
             border-radius: 8px;
@@ -287,6 +264,36 @@
             font-weight: 600;
             letter-spacing: 0.5px;
             margin-bottom: 8px;
+        }
+
+        .feature-tag {
+            display: inline-block;
+            background-color: #EBF5FF;
+            color: var(--teal);
+            font-size: 12px;
+            padding: 4px 8px;
+            border-radius: 4px;
+            margin-right: 8px;
+            margin-bottom: 5px;
+        }
+        
+        /* IP-specific styling */
+        .tag-Patent {
+            background-color: rgba(29, 167, 175, 0.15);
+            color: var(--patent-color);
+        }
+        
+        .tag-Trade-mark {
+            background-color: rgba(222, 67, 38, 0.15);
+            color: var(--trademark-color);
+        }
+        
+        .card-Patent {
+            border-left-color: var(--patent-color);
+        }
+        
+        .card-Trade-mark {
+            border-left-color: var(--trademark-color);
         }
         
         /* Card animation */
@@ -329,7 +336,6 @@
                     <a href="#">Home</a>
                     <a href="#">About</a>
                     <a href="#">Resources</a>
-                    <a href="#">Contact</a>
                 </nav>
             </div>
         </div>
@@ -355,8 +361,6 @@
                                     <option value="accused">I've been accused of infringing someone else's IP</option>
                                     <option value="infringement">I believe someone is using my IP without permission</option>
                                     <option value="protection">I want to proactively protect my IP</option>
-                                    <option value="conflict">I've come across an IP conflict or issue</option>
-                                    <option value="opposition">I believe someone else's IP should not be granted</option>
                                 </select>
                             </div>
                             
@@ -378,7 +382,6 @@
                                     <option value="Trade mark (registered)">Registered trade mark</option>
                                     <option value="Patent">Patent</option>
                                     <option value="Design">Registered design</option>
-                                    <option value="Unregistered brand or business name">Unregistered trade mark or brand</option>
                                 </select>
                             </div>
                         </div>
@@ -416,8 +419,6 @@
                         <option value="accused">I've been accused of infringing someone else's IP</option>
                         <option value="infringement">I believe someone is using my IP without permission</option>
                         <option value="protection">I want to proactively protect my IP</option>
-                        <option value="conflict">I've come across an IP conflict or issue</option>
-                        <option value="opposition">I believe someone else's IP should not be granted</option>
                     </select>
                 </div>
                 
@@ -437,7 +438,6 @@
                         <option value="Trade mark (registered)">Registered trade mark</option>
                         <option value="Patent">Patent</option>
                         <option value="Design">Registered design</option>
-                        <option value="Unregistered brand or business name">Unregistered trade mark or brand</option>
                     </select>
                 </div>
             </div>
@@ -464,12 +464,21 @@
     </div>
 
     <script>
-        // Load after DOM is fully loaded
-        document.addEventListener('DOMContentLoaded', function() {
-            // Set up all event listeners
-            setupEventListeners();
-        });
-        
+        // DOM Elements
+        const situationForm = document.getElementById('situationForm');
+        const promptContainer = document.getElementById('promptContainer');
+        const resultsContainer = document.getElementById('resultsContainer');
+        const resultsGrid = document.getElementById('resultsGrid');
+        const userDescription = document.getElementById('userDescription');
+        const editDescriptionBtn = document.getElementById('editDescription');
+        const backButton = document.getElementById('backButton');
+        const descriptionField = document.getElementById('description');
+        const situationFilter = document.getElementById('situationFilter');
+        const focusFilter = document.getElementById('focusFilter');
+        const ipTypeFilter = document.getElementById('ipTypeFilter');
+        const guideTextContainer = document.getElementById('guideTextContainer');
+        const guideText = document.getElementById('guideText');
+
         // Guide Text Data (simplified)
         const guideTextData = [
             {
@@ -483,14 +492,9 @@
                 "Guide Text": "I think a competitor's product is similar to my patent, and I want to make sure I'm prepared if they try to copy it more directly."
             },
             {
-                "User Goal": "Get professional support",
+                "User Goal": "Strengthen my position",
                 "IP Type": "Design",
-                "Guide Text": "I've registered a design but someone's making something similar. I want to speak to someone who can help me understand if that matters."
-            },
-            {
-                "User Goal": "Prevent potential infringement",
-                "IP Type": "Unregistered brand or business name",
-                "Guide Text": "I heard someone might be planning to launch a business with a name very close to mine. I want to know what I can do now to stop this before it happens."
+                "Guide Text": "A new product has a similar look to my registered design. I'm not sure if it's an issue, but I want to understand what I can do to protect my design."
             }
         ];
         
@@ -500,98 +504,36 @@
                 "Overtitle": "Patent opposition",
                 "Main Title": "Challenge a new or amended patent",
                 "Description": "Initiate a challenge to the validity of a new patent with IP Australia",
-                "Response Type": "Enforcement; Accused",
                 "Right it applies to": "Patent"
             },
             {
                 "Overtitle": "Court - Patent",
                 "Main Title": "Seek binding, authoritative decisions",
                 "Description": "Escalate a wide range of patent matters to court",
-                "Response Type": "Enforcement; Accused",
                 "Right it applies to": "Patent"
             },
             {
                 "Overtitle": "Trade mark opposition",
                 "Main Title": "Challenge a new or amended trade mark",
                 "Description": "Initiate a challenge to a trade mark application with IP Australia",
-                "Response Type": "Enforcement; Accused",
                 "Right it applies to": "Trade mark"
             },
             {
-                "Overtitle": "Non-use removal",
-                "Main Title": "Challenge inactive trade marks",
-                "Description": "Apply to remove a registered trade mark that is not being used",
-                "Response Type": "Enforcement; Accused",
-                "Right it applies to": "Trade mark"
-            },
-            {
-                "Overtitle": "Representation services",
-                "Main Title": "Get help from IP professionals",
-                "Description": "Engage an attorney or lawyer for representation and advice",
-                "Response Type": "Support",
+                "Overtitle": "Warning letter",
+                "Main Title": "Send a formal notice",
+                "Description": "Communicate concerns and request action through a formal letter",
                 "Right it applies to": "Any"
             },
             {
                 "Overtitle": "IP Australia",
                 "Main Title": "Contact for general guidance",
                 "Description": "Reach out for general information about IP rights and processes",
-                "Response Type": "Support",
-                "Right it applies to": "Any"
-            },
-            {
-                "Overtitle": "Warning letter",
-                "Main Title": "Send a formal notice",
-                "Description": "Communicate concerns and request action through a formal letter",
-                "Response Type": "Enforcement",
-                "Right it applies to": "Any"
-            },
-            {
-                "Overtitle": "Online platforms",
-                "Main Title": "Report IP violations on digital platforms",
-                "Description": "Use online platforms' reporting tools to address IP infringements",
-                "Response Type": "Enforcement",
-                "Right it applies to": "Trade mark; Copyright"
-            },
-            {
-                "Overtitle": "Licensing",
-                "Main Title": "Authorise others to use your IP",
-                "Description": "Create agreements that permit others to use your IP under specific terms",
-                "Response Type": "Agreement",
-                "Right it applies to": "Any"
-            },
-            {
-                "Overtitle": "Settlement agreement",
-                "Main Title": "Reach a formal resolution",
-                "Description": "Create a binding agreement to resolve an IP dispute",
-                "Response Type": "Agreement",
                 "Right it applies to": "Any"
             }
         ];
 
-        // DOM Elements
-        const situationForm = document.getElementById('situationForm');
-        const promptContainer = document.getElementById('promptContainer');
-        const resultsContainer = document.getElementById('resultsContainer');
-        const resultsGrid = document.getElementById('resultsGrid');
-        const userDescription = document.getElementById('userDescription');
-        const editDescriptionBtn = document.getElementById('editDescription');
-        const backButton = document.getElementById('backButton');
-        const descriptionField = document.getElementById('description');
-        
-        // Filter elements
-        const situationFilter = document.getElementById('situationFilter');
-        const focusFilter = document.getElementById('focusFilter');
-        const ipTypeFilter = document.getElementById('ipTypeFilter');
-        
-        // Function to set up all event listeners
-        function setupEventListeners() {
-            // Get elements
-            const situationSelect = document.getElementById('situation');
-            const focusSelect = document.getElementById('focus');
-            const ipTypeSelect = document.getElementById('ipType');
-            const guideTextContainer = document.getElementById('guideTextContainer');
-            const guideText = document.getElementById('guideText');
-            
+        // Set up event listeners
+        document.addEventListener('DOMContentLoaded', function() {
             // Edit description button
             editDescriptionBtn.addEventListener('click', function() {
                 promptContainer.style.display = 'block';
@@ -604,15 +546,15 @@
                 resultsContainer.style.display = 'none';
             });
             
-            // Filter change events - make cards update reactively
+            // Filter change events
             situationFilter.addEventListener('change', updateResults);
             focusFilter.addEventListener('change', updateResults);
             ipTypeFilter.addEventListener('change', updateResults);
             
             // Handle input changes for guide text updates
-            situationSelect.addEventListener('change', updateGuideText);
-            focusSelect.addEventListener('change', updateGuideText);
-            ipTypeSelect.addEventListener('change', updateGuideText);
+            document.getElementById('situation').addEventListener('change', updateGuideText);
+            document.getElementById('focus').addEventListener('change', updateGuideText);
+            document.getElementById('ipType').addEventListener('change', updateGuideText);
             
             // Submit form event
             situationForm.addEventListener('submit', function(e) {
@@ -620,59 +562,58 @@
                 showResults();
             });
             
-            // Direct button click as a fallback
+            // Explore button click
             document.getElementById('exploreBtn').addEventListener('click', function() {
                 if (situationForm.checkValidity()) {
                     showResults();
                 } else {
-                    const submitEvent = new Event('submit', { cancelable: true });
-                    situationForm.dispatchEvent(submitEvent);
+                    situationForm.reportValidity();
                 }
             });
+        });
+
+        // Update guide text based on selections
+        function updateGuideText() {
+            const focusSelect = document.getElementById('focus');
+            const ipTypeSelect = document.getElementById('ipType');
             
-            // Function to update guide text based on selections
-            function updateGuideText() {
-                // Get current selections
-                const focusValue = focusSelect.value;
-                const ipTypeValue = ipTypeSelect.value;
-                
-                // Map focus dropdown values to User Goal values in the CSV
-                const focusToGoalMap = {
-                    'strengthen': 'Strengthen my position',
-                    'agreement': 'Explore ways to reach an agreement',
-                    'prevent': 'Prevent potential infringement',
-                    'support': 'Get professional support'
-                };
-                
-                const userGoal = focusToGoalMap[focusValue];
-                
-                // Find matching guide text
-                let matchingGuideText = null;
-                
-                if (userGoal && ipTypeValue) {
-                    // Try to find exact match first
-                    matchingGuideText = guideTextData.find(item => 
-                        item["User Goal"] === userGoal && 
-                        item["IP Type"] === ipTypeValue
-                    );
-                }
-                
-                // Update the guide text
-                if (matchingGuideText) {
-                    guideText.textContent = matchingGuideText["Guide Text"];
-                    guideTextContainer.classList.add('active');
-                    descriptionField.placeholder = matchingGuideText["Guide Text"];
-                } else {
-                    guideText.textContent = "Select options above to see relevant examples...";
-                    guideTextContainer.classList.remove('active');
-                    descriptionField.placeholder = "This helps us show you content that may be more relevant.";
-                }
+            const focusValue = focusSelect.value;
+            const ipTypeValue = ipTypeSelect.value;
+            
+            // Map focus dropdown values to User Goal values
+            const focusToGoalMap = {
+                'strengthen': 'Strengthen my position',
+                'agreement': 'Explore ways to reach an agreement',
+                'prevent': 'Prevent potential infringement',
+                'support': 'Get professional support'
+            };
+            
+            const userGoal = focusToGoalMap[focusValue];
+            
+            // Find matching guide text
+            let matchingGuideText = null;
+            
+            if (userGoal && ipTypeValue) {
+                matchingGuideText = guideTextData.find(item => 
+                    item["User Goal"] === userGoal && 
+                    item["IP Type"] === ipTypeValue
+                );
+            }
+            
+            // Update the guide text
+            if (matchingGuideText) {
+                guideText.textContent = matchingGuideText["Guide Text"];
+                guideTextContainer.classList.add('active');
+                descriptionField.placeholder = matchingGuideText["Guide Text"];
+            } else {
+                guideText.textContent = "Select options above to see relevant examples...";
+                guideTextContainer.classList.remove('active');
+                descriptionField.placeholder = "This helps us show you content that may be more relevant.";
             }
         }
         
-        // Function to show results page
+        // Show results page
         function showResults() {
-            // Get form values
             const situation = document.getElementById('situation').value;
             const focus = document.getElementById('focus').value;
             const ipType = document.getElementById('ipType').value;
@@ -696,32 +637,20 @@
         
         // Update results when filters change
         function updateResults() {
-            const ipType = ipTypeFilter.value;
-            
-            // Add animation class to cards
-            const cards = document.querySelectorAll('.card:not(:first-child)');
-            cards.forEach(card => {
-                card.classList.add('card-updating');
-            });
-            
-            // Generate new results after a short delay for animation
-            setTimeout(() => {
-                generateResults(ipType);
-            }, 300);
+            generateResults(ipTypeFilter.value);
         }
         
-        // Generate results based on IP type and filters
+        // Generate results based on IP type
         function generateResults(ipType) {
             // Clear previous results
             resultsGrid.innerHTML = '';
             
             // Map from dropdown value to data value
             const ipTypeMap = {
-                'Trade mark (registered)': 'Trade mark',
-                'Unregistered brand or business name': 'Trade mark'
+                'Trade mark (registered)': 'Trade mark'
             };
             
-            // Get the mapped value or use the original if no mapping exists
+            // Get the mapped value or use the original
             const mappedIpType = ipTypeMap[ipType] || ipType;
             
             // Filter options based on IP type
@@ -731,7 +660,7 @@
                        option["Right it applies to"].includes(mappedIpType);
             });
             
-            // Create cards for each filtered option with staggered animation
+            // Create cards for each filtered option
             filteredOptions.forEach((option, index) => {
                 const card = createCard(option);
                 card.style.animationDelay = `${index * 0.05}s`;
@@ -745,7 +674,7 @@
                 noResults.className = 'card';
                 noResults.innerHTML = `
                     <h3 class="card-title">No options found</h3>
-                    <p>We couldn't find any specific options matching your criteria. Try adjusting your filters or contact an IP professional for assistance.</p>
+                    <p>We couldn't find any specific options matching your criteria. Try adjusting your filters.</p>
                 `;
                 resultsGrid.appendChild(noResults);
             }
