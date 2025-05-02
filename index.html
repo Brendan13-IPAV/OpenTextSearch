@@ -409,6 +409,8 @@
                                     <option value="accused">I've been accused of infringing someone else's IP</option>
                                     <option value="infringement">I believe someone is using my IP without permission</option>
                                     <option value="protection">I want to proactively protect my IP</option>
+                                    <option value="conflict">I've come across an IP conflict or issue</option>
+                                    <option value="challenge">I believe someone else's IP should not be granted</option>
                                 </select>
                             </div>
                             
@@ -475,6 +477,8 @@
                         <option value="accused">I've been accused of infringing someone else's IP</option>
                         <option value="infringement">I believe someone is using my IP without permission</option>
                         <option value="protection">I want to proactively protect my IP</option>
+                        <option value="conflict">I've come across an IP conflict or issue</option>
+                        <option value="challenge">I believe someone else's IP should not be granted</option>
                     </select>
                 </div>
                 
@@ -528,22 +532,7 @@
     </div>
 
     <script>
-        // DOM Elements
-        const situationForm = document.getElementById('situationForm');
-        const promptContainer = document.getElementById('promptContainer');
-        const resultsContainer = document.getElementById('resultsContainer');
-        const resultsGrid = document.getElementById('resultsGrid');
-        const userDescription = document.getElementById('userDescription');
-        const editDescriptionBtn = document.getElementById('editDescription');
-        const backButton = document.getElementById('backButton');
-        const descriptionField = document.getElementById('description');
-        const situationFilter = document.getElementById('situationFilter');
-        const focusFilter = document.getElementById('focusFilter');
-        const ipTypeFilter = document.getElementById('ipTypeFilter');
-        const guideTextContainer = document.getElementById('guideTextContainer');
-        const guideText = document.getElementById('guideText');
-
-        // Guide Text Data (expanded)
+        // Guide Text Data (3 examples only for demonstration)
         const guideTextData = [
             {
                 "User Goal": "Strengthen my position",
@@ -551,38 +540,18 @@
                 "Guide Text": "Someone else is using a name very similar to my registered trade mark. I want to understand what steps I can take to protect it going forward."
             },
             {
-                "User Goal": "Strengthen my position",
-                "IP Type": "Patent",
-                "Guide Text": "I think a competitor's product is similar to my patent, and I want to make sure I'm prepared if they try to copy it more directly."
-            },
-            {
-                "User Goal": "Strengthen my position",
-                "IP Type": "Design",
-                "Guide Text": "A new product has a similar look to my registered design. I'm not sure if it's an issue, but I want to understand what I can do to protect my design."
-            },
-            {
                 "User Goal": "Get support from a professional",
-                "IP Type": "Trade mark (registered)",
-                "Guide Text": "I need to speak with an expert about how to enforce my registered trade mark against potential infringers."
-            },
-            {
-                "User Goal": "Explore ways to reach agreement with someone",
                 "IP Type": "Patent",
-                "Guide Text": "A competitor may be using technology similar to my patented invention. I'd like to find a way to resolve this without going to court."
+                "Guide Text": "I believe a competitor might be using my patented technology without permission. I need expert advice on how to address this situation."
             },
             {
                 "User Goal": "Prevent a potential infringement",
                 "IP Type": "Copyright",
-                "Guide Text": "I've created original creative content and I'm concerned others might copy it without permission. I want to know what preventative steps I can take."
-            },
-            {
-                "User Goal": "Understand if there's an issue to deal with",
-                "IP Type": "Unregistered trade mark",
-                "Guide Text": "Someone is using a similar business name to mine, but I don't have it registered as a trade mark. I'm trying to determine if I have any rights I can enforce."
+                "Guide Text": "I've created original content that I plan to publish online, and I want to know what preventative measures I can take to protect it from unauthorised copying."
             }
         ];
         
-        // IP Enforcement Options Data (expanded with all CSV data) 
+        // IP Enforcement Options Data (15 selected options)
         const ipOptionsData = [
             {
                 "Overtitle": "Patent opposition",
@@ -641,24 +610,10 @@
                 "Right it applies to": "Trade mark"
             },
             {
-                "Overtitle": "Re-examination",
-                "Main Title": "Request review of an existing patent",
-                "Description": "Ask IP Australia to reconsider if a patent meets legal requirements",
-                "Response Type": "Administrative proceeding",
-                "Right it applies to": "Patent"
-            },
-            {
                 "Overtitle": "Court - Trade mark",
                 "Main Title": "Pursue legal action for trade mark matters",
                 "Description": "Take issues to court for binding judgement on trade mark rights",
                 "Response Type": "Legal proceeding",
-                "Right it applies to": "Trade mark"
-            },
-            {
-                "Overtitle": "Trade mark cancellation",
-                "Main Title": "Apply to cancel a registered trade mark",
-                "Description": "Request removal of a trade mark from the register",
-                "Response Type": "Administrative proceeding",
                 "Right it applies to": "Trade mark"
             },
             {
@@ -690,53 +645,11 @@
                 "Right it applies to": "Any"
             },
             {
-                "Overtitle": "Digital content protection",
-                "Main Title": "Prevent online distribution",
-                "Description": "Implement technical measures to control how content is shared",
-                "Response Type": "Technical solution",
-                "Right it applies to": "Copyright"
-            },
-            {
-                "Overtitle": "Plant breeder's right objection",
-                "Main Title": "Challenge a PBR application",
-                "Description": "Lodge a formal objection to a plant variety being registered",
-                "Response Type": "Administrative proceeding",
-                "Right it applies to": "Plant breeder"
-            },
-            {
-                "Overtitle": "Revocation - PBR",
-                "Main Title": "Challenge an existing plant variety",
-                "Description": "Apply to have a registered plant variety removed from the register",
-                "Response Type": "Administrative proceeding",
-                "Right it applies to": "Plant breeder"
-            },
-            {
-                "Overtitle": "Court - Design",
-                "Main Title": "Litigate design infringement",
-                "Description": "Take design rights disputes to court for resolution",
-                "Response Type": "Legal proceeding",
-                "Right it applies to": "Design"
-            },
-            {
                 "Overtitle": "Court - Copyright",
                 "Main Title": "Pursue copyright infringement",
-                "Description": "Seek legal remedies for unauthorized use of your work",
+                "Description": "Seek legal remedies for unauthorised use of your work",
                 "Response Type": "Legal proceeding",
                 "Right it applies to": "Copyright"
-            },
-            {
-                "Overtitle": "Settlement agreement",
-                "Main Title": "Negotiate a resolution",
-                "Description": "Create a formal agreement to resolve an IP dispute",
-                "Response Type": "Negotiation outcome",
-                "Right it applies to": "Any"
-            },
-            {
-                "Overtitle": "Regulation enforcement",
-                "Main Title": "Report to regulatory bodies",
-                "Description": "Engage government agencies that oversee specific industries",
-                "Response Type": "Regulatory action",
-                "Right it applies to": "Any"
             },
             {
                 "Overtitle": "Passing off action",
@@ -744,25 +657,23 @@
                 "Description": "Take legal action against misrepresentation of goods or services",
                 "Response Type": "Legal proceeding",
                 "Right it applies to": "Unregistered trade mark"
-            },
-            {
-                "Overtitle": "Australian Consumer Law",
-                "Main Title": "Address misleading conduct",
-                "Description": "Use consumer protection laws to stop deceptive practices",
-                "Response Type": "Legal proceeding",
-                "Right it applies to": "Any"
-            },
-            {
-                "Overtitle": "Court - PBR",
-                "Main Title": "Litigate plant variety issues",
-                "Description": "Pursue court action for plant breeder's rights matters",
-                "Response Type": "Legal proceeding",
-                "Right it applies to": "Plant breeder"
             }
         ];
 
-        // Set up event listeners
+        // DOM Elements
         document.addEventListener('DOMContentLoaded', function() {
+            const situationForm = document.getElementById('situationForm');
+            const promptContainer = document.getElementById('promptContainer');
+            const resultsContainer = document.getElementById('resultsContainer');
+            const resultsGrid = document.getElementById('resultsGrid');
+            const editDescriptionBtn = document.getElementById('editDescription');
+            const backButton = document.getElementById('backButton');
+            const situationFilter = document.getElementById('situationFilter');
+            const focusFilter = document.getElementById('focusFilter');
+            const ipTypeFilter = document.getElementById('ipTypeFilter');
+            const guideTextContainer = document.getElementById('guideTextContainer');
+            const guideText = document.getElementById('guideText');
+            
             // Edit description button
             editDescriptionBtn.addEventListener('click', function() {
                 promptContainer.style.display = 'block';
@@ -776,53 +687,176 @@
             });
             
             // Filter change events
-            situationFilter.addEventListener('change', updateResults);
-            focusFilter.addEventListener('change', updateResults);
-            ipTypeFilter.addEventListener('change', updateResults);
+            situationFilter.addEventListener('change', function() {
+                generateResults(ipTypeFilter.value);
+            });
+            
+            focusFilter.addEventListener('change', function() {
+                generateResults(ipTypeFilter.value);
+            });
+            
+            ipTypeFilter.addEventListener('change', function() {
+                generateResults(ipTypeFilter.value);
+            });
             
             // Handle input changes for guide text updates
             document.getElementById('situation').addEventListener('change', updateGuideText);
             document.getElementById('focus').addEventListener('change', updateGuideText);
             document.getElementById('ipType').addEventListener('change', updateGuideText);
             
-            // Submit form event
+            // Form submit event
             situationForm.addEventListener('submit', function(e) {
                 e.preventDefault();
                 showResults();
             });
             
-            // Explore button click
-            document.getElementById('exploreBtn').addEventListener('click', function() {
-                if (situationForm.checkValidity()) {
-                    showResults();
-                } else {
-                    situationForm.reportValidity();
+            // Function to update guide text
+            function updateGuideText() {
+                const focusSelect = document.getElementById('focus');
+                const ipTypeSelect = document.getElementById('ipType');
+                
+                const focusValue = focusSelect.value;
+                const ipTypeValue = ipTypeSelect.value;
+                
+                // Map focus dropdown values to User Goal values
+                const focusToGoalMap = {
+                    'understand': 'Understand if there\'s an issue to deal with',
+                    'strengthen': 'Strengthen my position',
+                    'support': 'Get support from a professional',
+                    'agreement': 'Explore ways to reach agreement with someone',
+                    'prevent_harm': 'Prevent harm to the public',
+                    'prevent_infringement': 'Prevent a potential infringement',
+                    'recoup': 'Recoup financial losses from another party'
+                };
+                
+                const userGoal = focusToGoalMap[focusValue];
+                
+                // Find matching guide text
+                let matchingGuideText = null;
+                
+                if (userGoal && ipTypeValue) {
+                    matchingGuideText = guideTextData.find(item => 
+                        item["User Goal"] === userGoal && 
+                        item["IP Type"] === ipTypeValue
+                    );
                 }
-            });
+                
+                // Update the guide text - if no exact match, show first example as fallback
+                if (matchingGuideText) {
+                    guideText.textContent = matchingGuideText["Guide Text"];
+                    guideTextContainer.classList.add('active');
+                    document.getElementById('description').placeholder = matchingGuideText["Guide Text"];
+                } else if (guideTextData.length > 0) {
+                    // Fallback to first example if no match found
+                    guideText.textContent = "Example: " + guideTextData[0]["Guide Text"];
+                    guideTextContainer.classList.add('active');
+                    document.getElementById('description').placeholder = guideTextData[0]["Guide Text"];
+                } else {
+                    guideText.textContent = "Select options above to see relevant examples...";
+                    guideTextContainer.classList.remove('active');
+                    document.getElementById('description').placeholder = "This helps us show you content that may be more relevant.";
+                }
+            }
+            
+            // Function to show results page
+            function showResults() {
+                const situation = document.getElementById('situation').value;
+                const focus = document.getElementById('focus').value;
+                const ipType = document.getElementById('ipType').value;
+                const description = document.getElementById('description').value;
+                
+                // Show results container, hide prompt container
+                promptContainer.style.display = 'none';
+                resultsContainer.style.display = 'block';
+                
+                // Set filters to match form values
+                situationFilter.value = situation;
+                focusFilter.value = focus;
+                ipTypeFilter.value = ipType;
+                
+                // Display user description
+                document.getElementById('userDescription').textContent = description || "No description provided.";
+                
+                // Generate results
+                generateResults(ipType);
+                
+                // Scroll to top
+                window.scrollTo(0, 0);
+            }
+            
+            // Function to generate results based on IP type
+            function generateResults(ipType) {
+                // Clear previous results
+                resultsGrid.innerHTML = '';
+                
+                // Map from dropdown value to data value
+                const ipTypeMap = {
+                    'Trade mark (registered)': 'Trade mark',
+                    'Unregistered trade mark': 'Unregistered trade mark',
+                    'Plant breeder': 'Plant breeder',
+                    'Unsure': 'Any'
+                };
+                
+                // Get the mapped value or use the original
+                const mappedIpType = ipTypeMap[ipType] || ipType;
+                
+                // Filter options based on IP type
+                const filteredOptions = ipOptionsData.filter(option => {
+                    const rightTypes = option["Right it applies to"].split(';').map(type => type.trim());
+                    return rightTypes.includes(mappedIpType) || rightTypes.includes("Any");
+                });
+                
+                // Create cards for each filtered option
+                filteredOptions.forEach((option, index) => {
+                    const card = createCard(option);
+                    card.style.animationDelay = `${index * 0.05}s`;
+                    card.classList.add('card-animated');
+                    resultsGrid.appendChild(card);
+                });
+                
+                // If no results, show a message
+                if (filteredOptions.length === 0) {
+                    const noResults = document.createElement('div');
+                    noResults.className = 'card';
+                    noResults.innerHTML = `
+                        <h3 class="card-title">No options found</h3>
+                        <p>We couldn't find any specific options matching your criteria. Try adjusting your filters.</p>
+                    `;
+                    resultsGrid.appendChild(noResults);
+                }
+            }
+            
+            // Function to create a card element for an IP option
+            function createCard(option) {
+                const primaryRightType = option["Right it applies to"].split(';')[0].trim();
+                const cardClass = `card card-${primaryRightType.replace(/\s+/g, '-')}`;
+                
+                const card = document.createElement('div');
+                card.className = cardClass;
+                
+                // Determine tag classes based on right it applies to
+                const rightTypes = option["Right it applies to"].split(';').map(type => type.trim());
+                const tagHtml = rightTypes.map(type => 
+                    `<span class="feature-tag tag-${type.replace(/\s+/g, '-')}">${type}</span>`
+                ).join('');
+                
+                // Add response type tag if available
+                const responseTypeTag = option["Response Type"] ? 
+                    `<span class="feature-tag">${option["Response Type"]}</span>` : '';
+                
+                card.innerHTML = `
+                    <div class="card-overtitle">${option.Overtitle}</div>
+                    <h3 class="card-title">${option["Main Title"]}</h3>
+                    <p>${option.Description}</p>
+                    <div class="card-tags">
+                        ${tagHtml}
+                        ${responseTypeTag}
+                    </div>
+                `;
+                
+                return card;
+            }
         });
-
-        // Update guide text based on selections
-        function updateGuideText() {
-            const focusSelect = document.getElementById('focus');
-            const ipTypeSelect = document.getElementById('ipType');
-            
-            const focusValue = focusSelect.value;
-            const ipTypeValue = ipTypeSelect.value;
-            
-            // Map focus dropdown values to User Goal values
-            const focusToGoalMap = {
-                'understand': 'Understand if there\'s an issue to deal with',
-                'strengthen': 'Strengthen my position',
-                'support': 'Get support from a professional',
-                'agreement': 'Explore ways to reach agreement with someone',
-                'prevent_harm': 'Prevent harm to the public',
-                'prevent_infringement': 'Prevent a potential infringement',
-                'recoup': 'Recoup financial losses from another party'
-            };
-            
-            const userGoal = focusToGoalMap[focusValue];
-            
-            // Find matching guide text
-            let matchingGuideText = null;
-            
-            if (userGoal && ip
+    </script>
+</body>
+</html>
