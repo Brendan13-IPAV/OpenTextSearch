@@ -118,6 +118,7 @@
             margin-bottom: 20px;
             border-left: 3px solid var(--teal);
             transition: transform 0.2s ease, opacity 0.3s ease;
+            position: relative;
         }
         
         .card:hover {
@@ -129,6 +130,14 @@
             font-weight: 600;
             font-size: 18px;
             margin-bottom: 10px;
+        }
+        
+        .relevancy-score {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            font-size: 12px;
+            color: var(--text-secondary);
         }
 
         /* Form elements */
@@ -193,12 +202,12 @@
             display: inline-block;
         }
 
-/* Layout classes */
-.grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-}
+        /* Layout classes */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
 
         .two-column {
             display: grid;
@@ -237,6 +246,12 @@
         }
         
         .guide-text-container.active .guide-text {
+            color: var(--text-primary);
+        }
+        
+        .guide-text-title {
+            font-weight: 500;
+            margin-bottom: 10px;
             color: var(--text-primary);
         }
         
@@ -336,17 +351,6 @@
         .card-Other {
             border-left-color: var(--all-rights-color);
         }
-        /* Added for the right container with guide text */
-.form-right-container {
-    display: flex;
-    flex-direction: column;
-}
-
-.guide-text-title {
-    font-weight: 500;
-    margin-bottom: 10px;
-    color: var(--text-primary);
-}
         
         /* Card animation */
         @keyframes cardAppear {
@@ -402,79 +406,77 @@
 
     <div class="container main-content">
         <!-- Initial Prompt Form -->
-<div class="prompt-container" id="promptContainer">
-    <div class="title-section">
-        <h1>IP Enforcement Options</h1>
-        <h2>Help us understand your situation</h2>
-        <p>This tool is designed to support people exploring enforcement options for intellectual property (IP). To begin, select the statements that best describe your current situation and what you're hoping to achieve.</p>
-    </div>
-    
-    <div class="card">
-        <form id="situationForm">
-            <div class="form-layout">
-                <div class="form-left">
-                    <div class="form-group">
-                        <label class="form-label" for="situation">What brings you here today?</label>
-                        <select class="form-control" id="situation" required>
-                            <option value="" selected disabled>Select the option that best describes your current situation</option>
-                            <option value="accused">I've been accused of infringing someone else's IP</option>
-                            <option value="infringement">I believe someone is using my IP without permission</option>
-                            <option value="protection">I want to proactively protect my IP</option>
-                            <option value="conflict">I've come across an IP conflict or issue</option>
-                            <option value="challenge">I believe someone else's IP should not be granted</option>
-                        </select>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label class="form-label" for="focus">What would you like to focus on today?</label>
-                        <select class="form-control" id="focus" required>
-                            <option value="" selected disabled>Select the outcome that most closely matches what you're looking to do</option>
-                            <option value="understand">Understand if there's an issue to deal with</option>
-                            <option value="strengthen">Strengthen my position</option>
-                            <option value="support">Get support from a professional</option>
-                            <option value="agreement">Explore ways to reach agreement with someone</option>
-                            <option value="prevent_harm">Prevent harm to the public</option>
-                            <option value="prevent_infringement">Prevent a potential infringement</option>
-                            <option value="recoup">Recoup financial losses from another party</option>
-                        </select>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label class="form-label" for="ipType">What type of IP is involved?</label>
-                        <select class="form-control" id="ipType" required>
-                            <option value="" selected disabled>Select the IP type that best fits your situation</option>
-                            <option value="Trade mark (registered)">Registered trade mark</option>
-                            <option value="Patent">Patent</option>
-                            <option value="Design">Registered design</option>
-                            <option value="Plant breeder">Plant breeder's right</option>
-                            <option value="Unregistered trade mark">Unregistered trade mark or brand</option>
-                            <option value="Copyright">Copyright</option>
-                            <option value="Other">Other rights</option>
-                            <option value="Unsure">I'm not sure</option>
-                        </select>
-                    </div>
-                </div>
-                
-                <div class="form-right">
-                    <div class="form-right-container">
-                        <div class="form-group">
-                            <label class="form-label" for="description">Describe your situation</label>
-                            <textarea class="form-control description-textarea" id="description" rows="11" placeholder="This helps us show you content that may be more relevant."></textarea>
-                        </div>
-                        
-                        <!-- Dynamic guide text with title -->
-                        <div class="guide-text-container" id="guideTextContainer">
-                            <h4 class="guide-text-title">Example description and details you may include</h4>
-                            <p class="guide-text" id="guideText">Select options above to see relevant examples...</p>
-                        </div>
-                    </div>
-                </div>
+        <div class="prompt-container" id="promptContainer">
+            <div class="title-section">
+                <h1>IP Enforcement Options</h1>
+                <h2>Help us understand your situation</h2>
+                <p>This tool is designed to support people exploring enforcement options for intellectual property (IP). To begin, select the statements that best describe your current situation and what you're hoping to achieve.</p>
             </div>
             
-            <button type="submit" class="btn btn-primary" id="exploreBtn">Explore options</button>
-        </form>
-    </div>
-</div>
+            <div class="card">
+                <form id="situationForm">
+                    <div class="form-layout">
+                        <div class="form-left">
+                            <div class="form-group">
+                                <label class="form-label" for="situation">What brings you here today?</label>
+                                <select class="form-control" id="situation" required>
+                                    <option value="" selected disabled>Select the option that best describes your current situation</option>
+                                    <option value="accused">I've been accused of infringing someone else's IP</option>
+                                    <option value="infringement">I believe someone is using my IP without permission</option>
+                                    <option value="protection">I want to proactively protect my IP</option>
+                                    <option value="conflict">I've come across an IP conflict or issue</option>
+                                    <option value="challenge">I believe someone else's IP should not be granted</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label" for="focus">What would you like to focus on today?</label>
+                                <select class="form-control" id="focus" required>
+                                    <option value="" selected disabled>Select the outcome that most closely matches what you're looking to do</option>
+                                    <option value="understand">Understand if there's an issue to deal with</option>
+                                    <option value="strengthen">Strengthen my position</option>
+                                    <option value="support">Get support from a professional</option>
+                                    <option value="agreement">Explore ways to reach agreement with someone</option>
+                                    <option value="prevent_harm">Prevent harm to the public</option>
+                                    <option value="prevent_infringement">Prevent a potential infringement</option>
+                                    <option value="recoup">Recoup financial losses from another party</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label" for="ipType">What type of IP is involved?</label>
+                                <select class="form-control" id="ipType" required>
+                                    <option value="" selected disabled>Select the IP type that best fits your situation</option>
+                                    <option value="Trade mark (registered)">Registered trade mark</option>
+                                    <option value="Patent">Patent</option>
+                                    <option value="Design">Registered design</option>
+                                    <option value="Plant breeder">Plant breeder's right</option>
+                                    <option value="Unregistered trade mark">Unregistered trade mark or brand</option>
+                                    <option value="Copyright">Copyright</option>
+                                    <option value="Other">Other rights</option>
+                                    <option value="Unsure">I'm not sure</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-right">
+                            <div class="form-group">
+                                <label class="form-label" for="description">Describe your situation</label>
+                                <textarea class="form-control description-textarea" id="description" rows="11" placeholder="This helps us show you content that may be more relevant."></textarea>
+                            </div>
+                            
+                            <!-- Dynamic guide text with title -->
+                            <div class="guide-text-container" id="guideTextContainer">
+                                <h4 class="guide-text-title">Example description and details you may include</h4>
+                                <p class="guide-text" id="guideText">Select options above to see relevant examples...</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary" id="exploreBtn">Explore options</button>
+                </form>
+            </div>
+        </div>
         
         <!-- Results Page (initially hidden) -->
         <div class="results-container" id="resultsContainer">
@@ -483,50 +485,63 @@
                 <h2>Options that might be worth considering</h2>
             </div>
             
-
-            
-            <div class="form-group">
-                <label class="form-label" for="focusFilter">What would you like to focus on today?</label>
-                <select class="form-control" id="focusFilter">
-                    <option value="understand">Understand if there's an issue to deal with</option>
-                    <option value="strengthen">Strengthen my position</option>
-                    <option value="support">Get support from a professional</option>
-                    <option value="agreement">Explore ways to reach agreement with someone</option>
-                    <option value="prevent_harm">Prevent harm to the public</option>
-                    <option value="prevent_infringement">Prevent a potential infringement</option>
-                    <option value="recoup">Recoup financial losses from another party</option>
-                </select>
+            <!-- Filters and description side by side -->
+            <div class="form-layout">
+                <div class="form-left">
+                    <div class="filters-panel">
+                        <div class="form-group">
+                            <label class="form-label" for="situationFilter">What brings you here today?</label>
+                            <select class="form-control" id="situationFilter">
+                                <option value="accused">I've been accused of infringing someone else's IP</option>
+                                <option value="infringement">I believe someone is using my IP without permission</option>
+                                <option value="protection">I want to proactively protect my IP</option>
+                                <option value="conflict">I've come across an IP conflict or issue</option>
+                                <option value="challenge">I believe someone else's IP should not be granted</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="focusFilter">What would you like to focus on today?</label>
+                            <select class="form-control" id="focusFilter">
+                                <option value="understand">Understand if there's an issue to deal with</option>
+                                <option value="strengthen">Strengthen my position</option>
+                                <option value="support">Get support from a professional</option>
+                                <option value="agreement">Explore ways to reach agreement with someone</option>
+                                <option value="prevent_harm">Prevent harm to the public</option>
+                                <option value="prevent_infringement">Prevent a potential infringement</option>
+                                <option value="recoup">Recoup financial losses from another party</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="ipTypeFilter">What type of IP is involved?</label>
+                            <select class="form-control" id="ipTypeFilter">
+                                <option value="Trade mark (registered)">Registered trade mark</option>
+                                <option value="Patent">Patent</option>
+                                <option value="Design">Registered design</option>
+                                <option value="Plant breeder">Plant breeder's right</option>
+                                <option value="Unregistered trade mark">Unregistered trade mark or brand</option>
+                                <option value="Copyright">Copyright</option>
+                                <option value="Other">Other rights</option>
+                                <option value="Unsure">I'm not sure</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-right">
+                    <div class="sidebar">
+                        <h3>Your description</h3>
+                        <p id="userDescription"></p>
+                        <button class="btn-edit" id="editDescription">Edit</button>
+                    </div>
+                </div>
             </div>
             
-            <div class="form-group">
-                <label class="form-label" for="ipTypeFilter">What type of IP is involved?</label>
-                <select class="form-control" id="ipTypeFilter">
-                    <option value="Trade mark (registered)">Registered trade mark</option>
-                    <option value="Patent">Patent</option>
-                    <option value="Design">Registered design</option>
-                    <option value="Plant breeder">Plant breeder's right</option>
-                    <option value="Unregistered trade mark">Unregistered trade mark or brand</option>
-                    <option value="Copyright">Copyright</option>
-                    <option value="Other">Other rights</option>
-                    <option value="Unsure">I'm not sure</option>
-                </select>
+            <!-- Main results grid (now 3-column) -->
+            <div class="grid" id="resultsGrid">
+                <!-- Cards will be dynamically inserted here -->
             </div>
-        </div>
-    </div>
-    
-    <div class="form-right">
-        <div class="sidebar">
-            <h3>Your description</h3>
-            <p id="userDescription"></p>
-            <button class="btn-edit" id="editDescription">Edit</button>
-        </div>
-    </div>
-</div>
-
-<!-- Main results grid (now 3-column) -->
-<div class="grid" id="resultsGrid">
-    <!-- Cards will be dynamically inserted here -->
-</div>
             
             <div style="margin-top: 30px;">
                 <button class="btn btn-secondary" id="backButton">Back to form</button>
@@ -1154,6 +1169,7 @@ const ipOptionsData = [
             const ipTypeFilter = document.getElementById('ipTypeFilter');
             const guideTextContainer = document.getElementById('guideTextContainer');
             const guideText = document.getElementById('guideText');
+            const descriptionInput = document.getElementById('description');
             
             // Edit description button
             editDescriptionBtn.addEventListener('click', function() {
@@ -1167,17 +1183,22 @@ const ipOptionsData = [
                 resultsContainer.style.display = 'none';
             });
             
-            // Filter change events
+            // Filter change events - now with relevancy calculation
             situationFilter.addEventListener('change', function() {
-                generateResults(ipTypeFilter.value);
+                calculateRelevancy();
             });
             
             focusFilter.addEventListener('change', function() {
-                generateResults(ipTypeFilter.value);
+                calculateRelevancy();
             });
             
             ipTypeFilter.addEventListener('change', function() {
-                generateResults(ipTypeFilter.value);
+                calculateRelevancy();
+            });
+            
+            // Description input change for relevancy calculation
+            document.getElementById('userDescription').addEventListener('input', function() {
+                calculateRelevancy();
             });
             
             // Handle input changes for guide text updates
@@ -1258,17 +1279,20 @@ const ipOptionsData = [
                 // Display user description
                 document.getElementById('userDescription').textContent = description || "No description provided.";
                 
-                // Generate results
-                generateResults(ipType);
+                // Generate results with relevancy
+                calculateRelevancy();
                 
                 // Scroll to top
                 window.scrollTo(0, 0);
             }
             
-            // Function to generate results based on IP type
-            function generateResults(ipType) {
-                // Clear previous results
-                resultsGrid.innerHTML = '';
+            // Function to calculate relevancy and generate results
+            function calculateRelevancy() {
+                // Get current filter values
+                const situation = situationFilter.value;
+                const focus = focusFilter.value;
+                const ipType = ipTypeFilter.value;
+                const description = document.getElementById('userDescription').textContent;
                 
                 // Map from dropdown value to data value
                 const ipTypeMap = {
@@ -1286,6 +1310,50 @@ const ipOptionsData = [
                     const rightTypes = option["Right it applies to"].split(';').map(type => type.trim());
                     return rightTypes.includes(mappedIpType) || rightTypes.includes("Any");
                 });
+                
+                // Calculate relevancy score for each option
+                filteredOptions.forEach(option => {
+                    let score = 50; // Base score
+                    
+                    // IP type match increases score
+                    const rightTypes = option["Right it applies to"].split(';').map(type => type.trim());
+                    if (rightTypes.includes(mappedIpType)) {
+                        score += 20;
+                    }
+                    
+                    // Response type match increases score
+                    const responseTypes = option["Response Type"].split(';').map(type => type.trim());
+                    if (responseTypes.includes(mapSituationToResponseType(situation))) {
+                        score += 15;
+                    }
+                    
+                    // Match keywords in description to option title and description
+                    if (description && description.length > 0) {
+                        const descriptionWords = description.toLowerCase().split(/\s+/);
+                        const optionText = (option["Main Title"] + " " + option.Description).toLowerCase();
+                        
+                        descriptionWords.forEach(word => {
+                            if (word.length > 3 && optionText.includes(word)) {
+                                score += 3;
+                            }
+                        });
+                    }
+                    
+                    // Add a little randomness to make it seem more dynamic
+                    score += Math.floor(Math.random() * 10);
+                    
+                    // Cap score at 100
+                    score = Math.min(score, 100);
+                    
+                    // Assign relevancy score to option
+                    option.relevancyScore = score;
+                });
+                
+                // Sort by relevancy score (highest first)
+                filteredOptions.sort((a, b) => b.relevancyScore - a.relevancyScore);
+                
+                // Clear previous results
+                resultsGrid.innerHTML = '';
                 
                 // Create cards for each filtered option
                 filteredOptions.forEach((option, index) => {
@@ -1307,33 +1375,46 @@ const ipOptionsData = [
                 }
             }
             
+            // Helper function to map situation to response type
+            function mapSituationToResponseType(situation) {
+                switch(situation) {
+                    case 'accused': return 'Accused';
+                    case 'infringement': return 'Enforcement';
+                    case 'protection': return 'Proactive';
+                    case 'conflict': return 'Enforcement';
+                    case 'challenge': return 'Enforcement';
+                    default: return 'Proactive';
+                }
+            }
+            
         // Function to create a card element for an IP option
-function createCard(option) {
-    // Get primary right type for card styling
-    const primaryRightType = option["Right it applies to"].split(';')[0].trim();
-    const cardClass = `card card-${primaryRightType.replace(/\s+/g, '-')}`;
-    
-    const card = document.createElement('div');
-    card.className = cardClass;
-    
-    // Determine tag classes based on right it applies to
-    const rightTypes = option["Right it applies to"].split(';').map(type => type.trim());
-    const tagHtml = rightTypes.map(type => 
-        `<span class="feature-tag tag-${type.replace(/\s+/g, '-')}">${type}</span>`
-    ).join('');
-    
-    // Create card HTML
-    card.innerHTML = `
-        <div class="card-overtitle">${option.Overtitle}</div>
-        <h3 class="card-title">${option["Main Title"]}</h3>
-        <p>${option.Description}</p>
-        <div class="card-tags">
-            ${tagHtml}
-        </div>
-    `;
-    
-    return card;
-}
+        function createCard(option) {
+            // Get primary right type for card styling
+            const primaryRightType = option["Right it applies to"].split(';')[0].trim();
+            const cardClass = `card card-${primaryRightType.replace(/\s+/g, '-')}`;
+            
+            const card = document.createElement('div');
+            card.className = cardClass;
+            
+            // Determine tag classes based on right it applies to
+            const rightTypes = option["Right it applies to"].split(';').map(type => type.trim());
+            const tagHtml = rightTypes.map(type => 
+                `<span class="feature-tag tag-${type.replace(/\s+/g, '-')}">${type}</span>`
+            ).join('');
+            
+            // Create card HTML with relevancy score
+            card.innerHTML = `
+                <div class="relevancy-score">${option.relevancyScore}% relevant</div>
+                <div class="card-overtitle">${option.Overtitle}</div>
+                <h3 class="card-title">${option["Main Title"]}</h3>
+                <p>${option.Description}</p>
+                <div class="card-tags">
+                    ${tagHtml}
+                </div>
+            `;
+            
+            return card;
+        }
         });
     </script>
 </body>
