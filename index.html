@@ -1331,53 +1331,73 @@ const ipOptionsData = [
                 showResults();
             });
             
-            // Function to update guide text
-            function updateGuideText() {
-                const focusSelect = document.getElementById('focus');
-                const ipTypeSelect = document.getElementById('ipType');
-                
-                const focusValue = focusSelect.value;
-                const ipTypeValue = ipTypeSelect.value;
-                
-                // Map focus dropdown values to User Goal values
-                const focusToGoalMap = {
-                    'understand': 'Understand if there\'s an issue to deal with',
-                    'strengthen': 'Strengthen my position',
-                    'support': 'Get support from a professional',
-                    'agreement': 'Explore ways to reach agreement with someone',
-                    'prevent_harm': 'Prevent harm to the public',
-                    'prevent_infringement': 'Prevent a potential infringement',
-                    'recoup': 'Recoup financial losses from another party'
-                };
-                
-                const userGoal = focusToGoalMap[focusValue];
-                
-                // Find matching guide text
-                let matchingGuideText = null;
-                
-                if (userGoal && ipTypeValue) {
-                    matchingGuideText = guideTextData.find(item => 
-                        item["User Goal"] === userGoal && 
-                        item["IP Type"] === ipTypeValue
-                    );
-                }
-                
-                // Update the guide text - if no exact match, show first example as fallback
-                if (matchingGuideText) {
-                    guideText.textContent = matchingGuideText["Guide Text"];
-                    guideTextContainer.classList.add('active');
-                    document.getElementById('description').placeholder = matchingGuideText["Guide Text"];
-                } else if (guideTextData.length > 0) {
-                    // Fallback to first example if no match found
-                    guideText.textContent = "Example: " + guideTextData[0]["Guide Text"];
-                    guideTextContainer.classList.add('active');
-                    document.getElementById('description').placeholder = guideTextData[0]["Guide Text"];
-                } else {
-                    guideText.textContent = "Select options above to see relevant examples...";
-                    guideTextContainer.classList.remove('active');
-                    document.getElementById('description').placeholder = "This helps us show you content that may be more relevant.";
-                }
+// Function to update guide text
+function updateGuideText() {
+    const situationSelect = document.getElementById('situation');
+    const focusSelect = document.getElementById('focus');
+    const ipTypeSelect = document.getElementById('ipType');
+    
+    const situationValue = situationSelect.value;
+    const focusValue = focusSelect.value;
+    const ipTypeValue = ipTypeSelect.value;
+    
+    // Map focus dropdown values to User Goal values
+    const focusToGoalMap = {
+        'understand': 'Understand if there\'s an issue to deal with',
+        'strengthen': 'Strengthen my position',
+        'support': 'Get support from a professional',
+        'agreement': 'Explore ways to reach agreement with someone',
+        'prevent_harm': 'Prevent harm to the public',
+        'prevent_infringement': 'Prevent a potential infringement',
+        'recoup': 'Recoup financial losses from another party'
+    };
+    
+    const userGoal = focusToGoalMap[focusValue];
+    
+    // Only show guide text if all three selections are made
+    if (situationValue && focusValue && ipTypeValue) {
+        // Find matching guide text
+        let matchingGuideText = guideTextData.find(item => 
+            item["Situation"] === situationValue &&
+            item["User Goal"] === userGoal && 
+            item["IP Type"] === ipTypeValue
+        );
+        
+        // Update the guide text - if no exact match, find a close match
+        if (matchingGuideText) {
+            guideText.textContent = matchingGuideText["Guide Text"];
+            guideTextContainer.classList.add('active');
+            document.getElementById('description').placeholder = matchingGuideText["Guide Text"];
+        } else {
+            // Try to find a match with just the User Goal and IP Type
+            matchingGuideText = guideTextData.find(item => 
+                item["User Goal"] === userGoal && 
+                item["IP Type"] === ipTypeValue
+            );
+            
+            if (matchingGuideText) {
+                guideText.textContent = matchingGuideText["Guide Text"];
+                guideTextContainer.classList.add('active');
+                document.getElementById('description').placeholder = matchingGuideText["Guide Text"];
+            } else {
+                // If still no match, show a generic message
+                guideText.textContent = "No specific example available for this combination. Please describe your situation in detail.";
+                guideTextContainer.classList.add('active');
+                document.getElementById('description').placeholder = "Please describe your situation in detail.";
             }
+        }
+    } else {
+        // If not all selections are made, hide or show default message
+        guideText.textContent = "Select all options above to see relevant examples...";
+        guideTextContainer.classList.remove('active');
+        document.getElementById('description').placeholder = "This helps us show you content that may be more relevant.";
+    }
+}
+
+// Add event listeners to all three select elements
+document.getElementById('situation').addEventListener('change', updateGuideText);
+document.getElementById('focus').addEventListener('change', updateGuideText);
+document.getElementById('ipType').addEventListener('change', updateGuideText);
             
             // Function to show results page
             function showResults() {
