@@ -552,105 +552,224 @@
     <script>
 
 const guideTextData = [
+    // Infringement + Understanding + Different IP types
     {
-        "User Goal": "Strengthen my position",
+        "User Goal": "Understand if there's an issue to deal with",
         "IP Type": "Trade mark (registered)",
-        "Guide Text": "Someone else is using a name very similar to my registered trade mark. I want to understand what steps I can take to protect it going forward."
+        "Situation": "infringement",
+        "Guide Text": "I noticed a company is using a logo similar to my registered trade mark. Their product is in a related category to mine but not identical. I'm not sure if this counts as infringement or if I should take action. My business has been operating for 5 years, and we're based in Melbourne."
     },
     {
-        "User Goal": "Get support from a professional",
+        "User Goal": "Understand if there's an issue to deal with",
         "IP Type": "Patent",
-        "Guide Text": "I believe a competitor might be using my patented technology without permission. I need expert advice on how to address this situation."
+        "Situation": "infringement",
+        "Guide Text": "A competitor has launched a product that uses a mechanism similar to my patented invention. Please include details about where you've seen the potentially infringing product, how similar it is to your patented invention, and whether the competitor might be aware of your patent."
     },
     {
-        "User Goal": "Prevent a potential infringement",
+        "User Goal": "Understand if there's an issue to deal with",
         "IP Type": "Copyright",
-        "Guide Text": "I've created original content that I plan to publish online, and I want to know what preventative measures I can take to protect it from unauthorised copying."
+        "Situation": "infringement",
+        "Guide Text": "I found my photographs being used on another company's website without permission. They've cropped out my watermark. How can I determine if this is a clear infringement? Please mention how you discovered the use, whether it's for commercial purposes, and how long it's been happening."
     },
+
+    // Infringement + Strengthening + Different IP types
     {
-        "User Goal": "Understand if there's an issue to deal with",
+        "User Goal": "Strengthen my position",
         "IP Type": "Trade mark (registered)",
-        "Guide Text": "A competitor is using a similar name to my registered trade mark. I'm not sure if it's different enough to be allowed or if I should take action."
-    },
-    {
-        "User Goal": "Understand if there's an issue to deal with",
-        "IP Type": "Patent",
-        "Guide Text": "I've noticed a product on the market that seems very similar to my patented invention. I'm trying to determine if this counts as infringement."
-    },
-    {
-        "User Goal": "Understand if there's an issue to deal with",
-        "IP Type": "Unregistered trade mark",
-        "Guide Text": "Someone is using a similar business name to mine, but I don't have it registered as a trade mark. I'm trying to determine if I have any rights I can enforce."
+        "Situation": "infringement",
+        "Guide Text": "A new business has opened using a name very similar to my registered trade mark. I want to ensure I maintain strong protection. Please describe how long you've had your trade mark, its market recognition, and any evidence of customer confusion you've already observed."
     },
     {
         "User Goal": "Strengthen my position",
         "IP Type": "Patent",
-        "Guide Text": "I think a competitor's product is similar to my patent, and I want to make sure I'm prepared if they try to copy it more directly."
+        "Situation": "infringement",
+        "Guide Text": "I believe a product on the market infringes my patent, and I want to strengthen my position before addressing this with the manufacturer. Include details about your patent's filing date, when you first noticed the potential infringement, and any prior relationship with the infringing party."
     },
     {
         "User Goal": "Strengthen my position",
-        "IP Type": "Design",
-        "Guide Text": "A new product has a similar look to my registered design. I'm not sure if it's an issue, but I want to understand what I can do to protect my design."
+        "IP Type": "Copyright",
+        "Situation": "infringement",
+        "Guide Text": "My copyrighted content is being shared on multiple websites. I need to strengthen my position before taking action. Describe the nature of your content, when it was created, how you've previously published it, and any copyright notices or registrations you have."
     },
+
+    // Infringement + Professional Support + Different IP types
     {
         "User Goal": "Get support from a professional",
         "IP Type": "Trade mark (registered)",
-        "Guide Text": "I need to speak with an expert about how to enforce my registered trade mark against potential infringers."
+        "Situation": "infringement",
+        "Guide Text": "I need help from a professional about a company using a very similar trade mark to mine. Their products are appearing in the same retail stores as mine. Please mention the size of your business, how long this has been happening, and the potential impact on your sales or reputation."
+    },
+    {
+        "User Goal": "Get support from a professional",
+        "IP Type": "Patent",
+        "Situation": "infringement",
+        "Guide Text": "I need expert advice on addressing a potential patent infringement. A large company is using technology that appears to be covered by my patent. Include information about your business size compared to the potential infringer, your patent's commercial significance, and any prior attempts to address the issue."
     },
     {
         "User Goal": "Get support from a professional",
         "IP Type": "Copyright",
-        "Guide Text": "I've found my creative work being used commercially without my permission. I need professional advice on what steps to take next."
+        "Situation": "infringement",
+        "Guide Text": "I've discovered my software code has been copied into another application. I need professional help to address this. Detail when you created the work, how you discovered the infringement, and what evidence you've collected so far about the unauthorized use."
+    },
+
+    // Infringement + Agreement + Different IP types
+    {
+        "User Goal": "Explore ways to reach agreement with someone",
+        "IP Type": "Trade mark (registered)",
+        "Situation": "infringement",
+        "Guide Text": "A business is using a similar trade mark to mine in a different region. I'd like to explore a resolution rather than immediate legal action. Include information about whether you've had any communication with them already, if there are any potential collaboration opportunities, and your ideal outcome."
     },
     {
         "User Goal": "Explore ways to reach agreement with someone",
         "IP Type": "Patent",
-        "Guide Text": "A competitor may be using technology similar to my patented invention. I'd like to find a way to resolve this without going to court."
+        "Situation": "infringement",
+        "Guide Text": "A smaller company may be using my patented technology. I'd prefer to reach a licensing agreement rather than pursue litigation. Describe your relationship with this company, whether you've approached them already, and what terms you might consider reasonable for a license."
     },
     {
         "User Goal": "Explore ways to reach agreement with someone",
+        "IP Type": "Copyright",
+        "Situation": "infringement",
+        "Guide Text": "An online content creator has adapted my copyrighted material. I'm interested in resolving this amicably. Mention how their use impacts your work, any contact you've had with them, and if you'd consider licensing your content under certain conditions."
+    },
+
+    // Infringement + Prevent Harm + Different IP types
+    {
+        "User Goal": "Prevent harm to the public",
         "IP Type": "Trade mark (registered)",
-        "Guide Text": "Another business is using a similar trade mark to mine in a slightly different market. I'm looking for options to resolve this situation amicably."
+        "Situation": "infringement",
+        "Guide Text": "Someone is selling products using a mark similar to mine, but their products are of low quality and could be unsafe. I'm concerned about public safety and damage to my reputation. Include details about the potential safety issues, any customer complaints received, and where these products are being sold."
     },
     {
         "User Goal": "Prevent harm to the public",
         "IP Type": "Patent",
-        "Guide Text": "I believe someone is selling products that infringe my patent and may be unsafe. I want to stop them to protect consumers."
+        "Situation": "infringement",
+        "Guide Text": "A company is selling products that infringe my patented safety mechanism, but their implementation appears unsafe. I'm concerned about potential injuries. Explain the specific safety concerns, how the infringing product differs from your patented design, and any market implications you're aware of."
     },
+    {
+        "User Goal": "Prevent harm to the public",
+        "IP Type": "Copyright",
+        "Situation": "infringement",
+        "Guide Text": "My medical guideline content has been copied but altered in ways that could lead to harmful medical advice. Describe exactly what content has been modified, where it's being distributed, and what specific harm could result from the unauthorized modifications."
+    },
+
+    // Infringement + Prevent Infringement + Different IP types
     {
         "User Goal": "Prevent a potential infringement",
         "IP Type": "Trade mark (registered)",
-        "Guide Text": "I've noticed someone is preparing to launch a product with a similar name to my registered trade mark. I want to take preventative action."
+        "Situation": "infringement",
+        "Guide Text": "I've learned of a company planning to launch a product with a name similar to my registered trade mark. I want to address this before they launch. Include information about how you learned of their plans, when the launch is expected, and any communication channels you might have with this company."
     },
     {
         "User Goal": "Prevent a potential infringement",
-        "IP Type": "Design",
-        "Guide Text": "I've seen early marketing materials for a product that looks very similar to my registered design. I want to address this before it launches."
+        "IP Type": "Patent",
+        "Situation": "infringement",
+        "Guide Text": "I've seen a prototype demonstration that appears to use my patented technology. The product hasn't been commercialized yet. Describe how you discovered the prototype, your relationship to the potential infringer, and how central your technology appears to be to their product."
+    },
+    {
+        "User Goal": "Prevent a potential infringement",
+        "IP Type": "Copyright",
+        "Situation": "infringement",
+        "Guide Text": "A publisher has announced a book with a synopsis very similar to my copyrighted work. It hasn't been released yet. Mention when your work was published, how you learned about the upcoming book, and any unique elements that appear to have been copied."
+    },
+
+    // Infringement + Recoup Losses + Different IP types
+    {
+        "User Goal": "Recoup financial losses from another party",
+        "IP Type": "Trade mark (registered)",
+        "Situation": "infringement",
+        "Guide Text": "A company has been using a mark similar to my registered trade mark for over a year, and I've lost significant business to them. Include an estimate of your financial losses, how you can attribute them to the infringement, and any documentation you have of the unauthorized use."
     },
     {
         "User Goal": "Recoup financial losses from another party",
         "IP Type": "Patent",
-        "Guide Text": "A company has been using my patented technology without permission and I've lost sales as a result. I want to seek compensation."
+        "Situation": "infringement",
+        "Guide Text": "A major competitor has been using my patented process without permission, impacting my market share. Detail the duration of the infringement, your evidence of their use, and how you've calculated or estimated your financial damages from their actions."
     },
     {
         "User Goal": "Recoup financial losses from another party",
         "IP Type": "Copyright",
-        "Guide Text": "My creative work has been copied and sold without my permission. I want to recover the revenue I should have earned from my work."
+        "Situation": "infringement",
+        "Guide Text": "My copyrighted training materials have been sold by another company, directly competing with my business. Explain how long this has been occurring, your evidence of sales or distribution, and the impact on your revenue or client relationships."
+    },
+
+    // Accused + Understanding + Different IP types
+    {
+        "User Goal": "Understand if there's an issue to deal with",
+        "IP Type": "Trade mark (registered)",
+        "Situation": "accused",
+        "Guide Text": "I received a letter claiming my business name infringes on a registered trade mark. I need to understand if this is valid and what my options are. Please include details about when you started using your name, when you received the complaint, and any research you've done on the other party's trade mark registration."
     },
     {
         "User Goal": "Understand if there's an issue to deal with",
-        "IP Type": "Design",
-        "Guide Text": "I've seen a product that looks similar to my registered design. I'm trying to work out if it's different enough to be allowed or if it infringes my rights."
+        "IP Type": "Patent",
+        "Situation": "accused",
+        "Guide Text": "I've been notified that my product may infringe someone's patent. I'm not familiar with the patent they're referencing. Describe your product's development timeline, when you received the notification, and any initial assessment you've made of the claimed patent."
     },
     {
         "User Goal": "Understand if there's an issue to deal with",
         "IP Type": "Copyright",
-        "Guide Text": "Someone has created content that seems inspired by my work. I want to know if this counts as copyright infringement or if it's different enough to be allowed."
+        "Situation": "accused",
+        "Guide Text": "I received a takedown notice claiming my online content infringes copyright. I believe my work is original. Include information about your content creation process, how similar it might be to the claimed original, and details of the takedown notice you received."
+    },
+
+    // Protection + Strengthen + Different IP types
+    {
+        "User Goal": "Strengthen my position",
+        "IP Type": "Trade mark (registered)",
+        "Situation": "protection",
+        "Guide Text": "I have a registered trade mark that's central to my business, and I want to ensure it's fully protected as we expand internationally. Please include details about your current markets, planned expansion regions, and any current protection measures you already have in place."
     },
     {
-        "User Goal": "Prevent harm to the public",
+        "User Goal": "Strengthen my position",
+        "IP Type": "Patent",
+        "Situation": "protection",
+        "Guide Text": "I've been granted a patent for my innovation and want to ensure it's strongly protected before approaching manufacturers. Describe the current stage of commercialization, any existing partnerships, and key industries where your invention might be valuable."
+    },
+    {
+        "User Goal": "Strengthen my position",
+        "IP Type": "Copyright",
+        "Situation": "protection",
+        "Guide Text": "I create digital content that's frequently copied online. I want to strengthen my copyright protection strategy. Include information about your content type, distribution channels, and any protection measures you currently employ."
+    },
+
+    // Conflict + Professional Support + Different IP types
+    {
+        "User Goal": "Get support from a professional",
         "IP Type": "Trade mark (registered)",
-        "Guide Text": "A company is using a trade mark similar to mine and selling poor quality products that might damage my reputation and mislead consumers."
+        "Situation": "conflict",
+        "Guide Text": "I've discovered a potential conflict between my registered trade mark and another company's recent application. I need professional guidance. Mention when you discovered the conflict, any communications you've had with the other party, and why you believe there may be confusion in the marketplace."
+    },
+    {
+        "User Goal": "Get support from a professional",
+        "IP Type": "Patent",
+        "Situation": "conflict",
+        "Guide Text": "There's an overlap between my patent application and an existing patent I recently discovered. I need expert advice on how to proceed. Detail when you filed your application, when you discovered the potential conflict, and the specific technical areas of overlap."
+    },
+    {
+        "User Goal": "Get support from a professional",
+        "IP Type": "Copyright",
+        "Situation": "conflict",
+        "Guide Text": "I've found myself in a copyright dispute with a collaborator over content we created together. I need professional support to resolve this. Describe the nature of your collaboration, any agreements you had in place, and the specific points of disagreement about ownership."
+    },
+
+    // Challenge + Agreement + Different IP types
+    {
+        "User Goal": "Explore ways to reach agreement with someone",
+        "IP Type": "Trade mark (registered)",
+        "Situation": "challenge",
+        "Guide Text": "I believe a recently registered trade mark overlaps with my business's common-law rights. I'd like to find a mutual agreement rather than formal opposition. Include information about your business history, evidence of your prior use, and what kind of agreement you might consider acceptable."
+    },
+    {
+        "User Goal": "Explore ways to reach agreement with someone",
+        "IP Type": "Patent",
+        "Situation": "challenge",
+        "Guide Text": "I have concerns about the breadth of a competitor's patent that might impact my industry. I'd prefer to reach an understanding rather than formal challenge. Describe your specific concerns about the patent, its potential impact on your business, and what type of agreement might satisfy both parties."
+    },
+    {
+        "User Goal": "Explore ways to reach agreement with someone",
+        "IP Type": "Copyright",
+        "Situation": "challenge",
+        "Guide Text": "Someone has claimed copyright over material I believe should be in the public domain. I want to resolve this collaboratively. Explain your basis for believing the material should be public domain, the importance of this material to your work, and any compromise positions you might consider."
     }
 ];
 
