@@ -402,96 +402,79 @@
 
     <div class="container main-content">
         <!-- Initial Prompt Form -->
-        <div class="prompt-container" id="promptContainer">
-            <div class="title-section">
-                <h1>IP Enforcement Options</h1>
-                <h2>Help us understand your situation</h2>
-                <p>This tool is designed to support people exploring enforcement options for intellectual property (IP). To begin, select the statements that best describe your current situation and what you're hoping to achieve.</p>
-            </div>
-            
-            <div class="card">
-                <form id="situationForm">
-                    <div class="form-layout">
-                        <div class="form-left">
-                            <div class="form-group">
-                                <label class="form-label" for="situation">What brings you here today?</label>
-                                <select class="form-control" id="situation" required>
-                                    <option value="" selected disabled>Select the option that best describes your current situation</option>
-                                    <option value="accused">I've been accused of infringing someone else's IP</option>
-                                    <option value="infringement">I believe someone is using my IP without permission</option>
-                                    <option value="protection">I want to proactively protect my IP</option>
-                                    <option value="conflict">I've come across an IP conflict or issue</option>
-                                    <option value="challenge">I believe someone else's IP should not be granted</option>
-                                </select>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label class="form-label" for="focus">What would you like to focus on today?</label>
-                                <select class="form-control" id="focus" required>
-                                    <option value="" selected disabled>Select the outcome that most closely matches what you're looking to do</option>
-                                    <option value="understand">Understand if there's an issue to deal with</option>
-                                    <option value="strengthen">Strengthen my position</option>
-                                    <option value="support">Get support from a professional</option>
-                                    <option value="agreement">Explore ways to reach agreement with someone</option>
-                                    <option value="prevent_harm">Prevent harm to the public</option>
-                                    <option value="prevent_infringement">Prevent a potential infringement</option>
-                                    <option value="recoup">Recoup financial losses from another party</option>
-                                </select>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label class="form-label" for="ipType">What type of IP is involved?</label>
-                                <select class="form-control" id="ipType" required>
-                                    <option value="" selected disabled>Select the IP type that best fits your situation</option>
-                                    <option value="Trade mark (registered)">Registered trade mark</option>
-                                    <option value="Patent">Patent</option>
-                                    <option value="Design">Registered design</option>
-                                    <option value="Plant breeder">Plant breeder's right</option>
-                                    <option value="Unregistered trade mark">Unregistered trade mark or brand</option>
-                                    <option value="Copyright">Copyright</option>
-                                    <option value="Other">Other rights</option>
-                                    <option value="Unsure">I'm not sure</option>
-                                </select>
-                            </div>
-                        </div>
-                        
-                        <div class="form-right">
-    <div class="form-right-container">
-        <div class="form-group">
-            <label class="form-label" for="description">Describe your situation</label>
-            <textarea class="form-control description-textarea" id="description" rows="11" placeholder="This helps us show you content that may be more relevant."></textarea>
-        </div>
-        
-        <!-- Dynamic guide text with title -->
-        <div class="guide-text-container" id="guideTextContainer">
-            <h4 class="guide-text-title">Example description and details you may include</h4>
-            <p class="guide-text" id="guideText">Select options above to see relevant examples...</p>
-        </div>
+<div class="prompt-container" id="promptContainer">
+    <div class="title-section">
+        <h1>IP Enforcement Options</h1>
+        <h2>Help us understand your situation</h2>
+        <p>This tool is designed to support people exploring enforcement options for intellectual property (IP). To begin, select the statements that best describe your current situation and what you're hoping to achieve.</p>
     </div>
-</div>
-                        
+    
+    <div class="card">
+        <form id="situationForm">
+            <div class="form-layout">
+                <div class="form-left">
+                    <div class="form-group">
+                        <label class="form-label" for="situation">What brings you here today?</label>
+                        <select class="form-control" id="situation" required>
+                            <option value="" selected disabled>Select the option that best describes your current situation</option>
+                            <option value="accused">I've been accused of infringing someone else's IP</option>
+                            <option value="infringement">I believe someone is using my IP without permission</option>
+                            <option value="protection">I want to proactively protect my IP</option>
+                            <option value="conflict">I've come across an IP conflict or issue</option>
+                            <option value="challenge">I believe someone else's IP should not be granted</option>
+                        </select>
                     </div>
                     
-                    <!-- Dynamic guide text that updates based on selections -->
-   <div class="form-right">
-    <div class="form-right-container">
-        <div class="form-group">
-            <label class="form-label" for="description">Describe your situation</label>
-            <textarea class="form-control description-textarea" id="description" rows="11" placeholder="This helps us show you content that may be more relevant."></textarea>
-        </div>
-        
-        <!-- Dynamic guide text with title -->
-        <div class="guide-text-container" id="guideTextContainer">
-            <h4 class="guide-text-title">Example description and details you may include</h4>
-            <p class="guide-text" id="guideText">Select options above to see relevant examples...</p>
-        </div>
+                    <div class="form-group">
+                        <label class="form-label" for="focus">What would you like to focus on today?</label>
+                        <select class="form-control" id="focus" required>
+                            <option value="" selected disabled>Select the outcome that most closely matches what you're looking to do</option>
+                            <option value="understand">Understand if there's an issue to deal with</option>
+                            <option value="strengthen">Strengthen my position</option>
+                            <option value="support">Get support from a professional</option>
+                            <option value="agreement">Explore ways to reach agreement with someone</option>
+                            <option value="prevent_harm">Prevent harm to the public</option>
+                            <option value="prevent_infringement">Prevent a potential infringement</option>
+                            <option value="recoup">Recoup financial losses from another party</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="ipType">What type of IP is involved?</label>
+                        <select class="form-control" id="ipType" required>
+                            <option value="" selected disabled>Select the IP type that best fits your situation</option>
+                            <option value="Trade mark (registered)">Registered trade mark</option>
+                            <option value="Patent">Patent</option>
+                            <option value="Design">Registered design</option>
+                            <option value="Plant breeder">Plant breeder's right</option>
+                            <option value="Unregistered trade mark">Unregistered trade mark or brand</option>
+                            <option value="Copyright">Copyright</option>
+                            <option value="Other">Other rights</option>
+                            <option value="Unsure">I'm not sure</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-right">
+                    <div class="form-right-container">
+                        <div class="form-group">
+                            <label class="form-label" for="description">Describe your situation</label>
+                            <textarea class="form-control description-textarea" id="description" rows="11" placeholder="This helps us show you content that may be more relevant."></textarea>
+                        </div>
+                        
+                        <!-- Dynamic guide text with title -->
+                        <div class="guide-text-container" id="guideTextContainer">
+                            <h4 class="guide-text-title">Example description and details you may include</h4>
+                            <p class="guide-text" id="guideText">Select options above to see relevant examples...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <button type="submit" class="btn btn-primary" id="exploreBtn">Explore options</button>
+        </form>
     </div>
 </div>
-                    
-                    <button type="submit" class="btn btn-primary" id="exploreBtn">Explore options</button>
-                </form>
-            </div>
-        </div>
         
         <!-- Results Page (initially hidden) -->
         <div class="results-container" id="resultsContainer">
